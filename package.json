@@ -1,5 +1,5 @@
 {
-  "name": "@apnex/shapecheck",
+  "name": "@apnex/shape-check",
   "version": "0.0.0",
   "private": true,
   "description": "Judge whether a value fits a shape declared as data.",
@@ -7,7 +7,7 @@
   "author": "apnex",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/apnex/shapecheck.git"
+    "url": "git+https://github.com/apnex/shape-check.git"
   },
   "type": "module",
   "engines": {

@@ -1,7 +1,7 @@
-# shapecheck - Vision
+# shape-check - Vision
 
 **Status: ratified by the director, 2026-10-09 (zorg's `docs/DECISIONS.md`, `D5`); enduring.**\
-This document states why shapecheck exists and what it will never be.\
+This document states why shape-check exists and what it will never be.\
 It carries no current state, no roadmap, and no schedule.
 
 Holding this document authorises nothing.\
@@ -34,14 +34,14 @@ Two checkers of the same shape drift: one accepts what the other refuses, and th
 An agent that is told only "invalid" guesses at the fix and tries again.\
 One that is told where the value is wrong and what was expected fixes it once.
 
-shapecheck judges shapes once, for every part that needs it, and explains every refusal.
+shape-check judges shapes once, for every part that needs it, and explains every refusal.
 
 ---
 
 ## What it is
 
 An embeddable library that takes a shape and a value and returns a verdict: the value fits, or it does not and here is why.\
-Shapes are supplied by whoever asks; shapecheck keeps none of its own.\
+Shapes are supplied by whoever asks; shape-check keeps none of its own.\
 It judges the values a system exchanges and keeps, never a transport's own envelope, which the transport checks for itself.
 
 It is embedded by components and applications that own their own process and their own shapes.
@@ -70,7 +70,7 @@ It never listens and never sends.
 **Not the owner of every refusal.**\
 It explains why a value does not fit its shape.\
 A refusal for any other reason - a revision that moved, an operation that declined - belongs to the part that refuses.\
-Even for a misfit, the part that asked decides whether to refuse and owns the refusal; shapecheck gives the verdict and the reason.
+Even for a misfit, the part that asked decides whether to refuse and owns the refusal; shape-check gives the verdict and the reason.
 
 ---
 
@@ -81,7 +81,7 @@ They are not weighted, and they do not collapse.
 
 **Agreement.**\
 Two parts judging the same value against the same shape never disagree, in verdict or in reason.\
-The measure is that the parts which carry shapecheck show no case where one accepts what another refuses.
+The measure is that the parts which carry shape-check show no case where one accepts what another refuses.
 
 **Legibility.**\
 Every misfit is explained completely: where it lies, what was expected there, and what would fit.\

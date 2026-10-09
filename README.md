@@ -1,4 +1,4 @@
-# shapecheck
+# shape-check
 
 Judge whether a value fits a shape declared as data.
 

@@ -1,7 +1,7 @@
 ---
 id: unminted
 category: component
-title: shapecheck - judge a value against a shape declared as data
+title: shape-check - judge a value against a shape declared as data
 status: draft
 hydrate-when: Two or more parts of a system check data against shapes declared as data, and each is about to write its own checker
 sovereignty: internal
@@ -9,9 +9,9 @@ supersedes: []
 related: [C0, A3]
 ---
 
-# shapecheck
+# shape-check
 
-The contract of record for shapecheck, admitted to zorg's component set by the director's ruling `D2` in zorg's `docs/DECISIONS.md`.\
+The contract of record for shape-check, admitted to zorg's component set by the director's ruling `D2` in zorg's `docs/DECISIONS.md`.\
 It also carries the fields of a mission-kit registry entry, and that entry is generated from this file when the component is filed, never written as a second copy.\
 The registry id is unminted on purpose; one is minted only when the entry is admitted to the registry.
 
@@ -35,7 +35,7 @@ The trait column names any trait a system takes on by using the capability.
 |---|---|---|---|---|
 | `declared-shape-validation` | provides | none | A value is judged against a shape declared as data; a misfit is explained with where it lies, what the shape expected there, and what would make the value fit, and the same value and shape always get the same verdict and reason. The part that asked owns any refusal. | none |
 
-shapecheck holds nothing between judgements, coordinates no actors and contains no model, so it brings no trait.
+shape-check holds nothing between judgements, coordinates no actors and contains no model, so it brings no trait.
 
 Owed before it is built: the language shapes are written in, how a shape states its version, and the exact form of a misfit explanation (zorg's `docs/ARCHITECTURE-TARGET.md`, owed and open).
 
@@ -44,7 +44,7 @@ Owed before it is built: the language shapes are written in, how a shape states 
 ## Reference
 
 Not yet built.\
-This repository, `apnex/shapecheck`, private until its first working code: `VISION.md` and, once built, the implementation.
+This repository, `apnex/shape-check`, private until its first working code: `VISION.md` and, once built, the implementation.
 
 ---
 
@@ -63,7 +63,7 @@ This repository, `apnex/shapecheck`, private until its first working code: `VISI
 
 **It is the wrong tool when**
 
-| You need | Reach elsewhere, because shapecheck is |
+| You need | Reach elsewhere, because shape-check is |
 |---|---|
 | shapes stored, versioned or shared between systems | not a store or a registry of shapes |
 | a value repaired, filled in or coerced | not a repairer |
@@ -77,7 +77,7 @@ This repository, `apnex/shapecheck`, private until its first working code: `VISI
 Internal and sovereign, so a fit gap has somewhere to go.
 
 1. Record a measured gap where both sides can see it.
-2. Resolve it by adjusting shapecheck, so every consumer gets the change, or by fracturing it when the gap reveals a second duty.
+2. Resolve it by adjusting shape-check, so every consumer gets the change, or by fracturing it when the gap reveals a second duty.
 3. Never fork.
 
 ---
@@ -89,4 +89,4 @@ Internal and sovereign, so a fit gap has somewhere to go.
 **Consumes, through a declared contract:** nothing.
 
 **Composed-by:** nothing yet.\
-Its capability is carried by opcall and entitystore.
+Its capability is carried by operation-call and entity-store.
