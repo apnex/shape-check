@@ -138,17 +138,19 @@ Tested by: `E9`, in `test/contract/declared-shape-validation.test.js`, with a co
 
 **SD6 - The corpus.**\
 The package ships a corpus in its `corpus/` directory, exported as `@apnex/shape-check/corpus`, so that every component carrying `declared-shape-validation` runs the same cases.\
-Each case is one JSON file holding exactly `description`, a string; `shape`, any JSON value; `value`, any JSON value whose numbers are all integers within 9007199254740991 of zero or not integers, and which nests at most 20 levels; and `verdict`, the expected verdict of SD4.\
+Each case is one JSON file holding exactly `description`, a string; `shape`, any JSON value; `value`, any JSON value; and `verdict`, the expected verdict of SD4.\
+Every case can cross AGP both as a request carrying its value and as a refusal carrying its misfits: every integer anywhere in it lies within 9007199254740991 of zero, its `shape` and its `value` each nest at most 20 levels, and its canonical JSON is at most 131072 bytes.\
+A judgement beyond those limits, such as a `const` holding a larger integer, is tested in shape-check's own tests, not in the corpus.\
 It covers, for every keyword of SD2, a value that fits and one that does not; every problem of SD3; one shape with several problems; ordering under SD5; `enum` and `const` holding objects; and the body shape of zorg's knowledge entry.\
 An agent other than the one that implements shape-check writes it from this section alone.\
-Tested by: stage 1's criterion, by `test/contract/declared-shape-validation.test.js` running every case.
+Tested by: stage 1's criterion, by `test/contract/declared-shape-validation.test.js` running every case and checking each against these limits; and `E12`, by `test/contract/public-surface.test.js` reading the corpus as `@apnex/shape-check/corpus`.
 
 **SD7 - How a carrying component runs the corpus.**\
 In operation-call, a fixture host declares, for each case, one operation whose input shape is the case's shape, and a caller invokes it with the case's value as its input.\
 A refused shape makes the declaration fail with the case's problems; a misfit ends the call refused with code `input-misfit` and the case's misfits; a fit reaches the operation.\
 In entity-store, a store is opened, for each case, with one kind whose body shape is the case's shape, and an entity is created with the case's value as its body.\
 A refused shape makes opening fail with the case's problems; a misfit is refused with code `misfit` and the case's misfits; a fit is accepted.\
-Neither component limits an input or a body to objects, so every case reaches the judgement; each compares the records it returns with the case's, in canonical JSON, byte for byte.\
+Neither component limits an input or a body to objects, and every case crosses AGP whole (SD6), so every case reaches the judgement and its records come back; each component compares the records it returns with the case's, in canonical JSON, byte for byte.\
 Tested by: `E9`, in `operation-call/test/contract/declared-shape-validation.test.js` and `entity-store/test/contract/declared-shape-validation.test.js`.
 
 ---
