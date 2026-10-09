@@ -32,7 +32,7 @@ The trait column names any trait a system takes on by using the capability.
 
 | Capability | Relation | Requires | What a consumer can depend on | Trait |
 |---|---|---|---|---|
-| `declared-shape-validation` | provides | none | A value is judged against a shape declared as data; a misfit is refused with where it lies, what the shape expected there, and what would make the value fit, and the same value and shape always get the same verdict and reason. | none |
+| `declared-shape-validation` | provides | none | A value is judged against a shape declared as data; a misfit is explained with where it lies, what the shape expected there, and what would make the value fit, and the same value and shape always get the same verdict and reason. The part that asked owns any refusal. | none |
 
 shapecheck holds nothing between judgements, coordinates no actors and contains no model, so it brings no trait.
 

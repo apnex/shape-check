@@ -41,7 +41,8 @@ shapecheck judges shapes once, for every part that needs it, and explains every 
 ## What it is
 
 An embeddable library that takes a shape and a value and returns a verdict: the value fits, or it does not and here is why.\
-Shapes are supplied by whoever asks; shapecheck keeps none of its own.
+Shapes are supplied by whoever asks; shapecheck keeps none of its own.\
+It judges the values a system exchanges and keeps, never a transport's own envelope, which the transport checks for itself.
 
 It is embedded by components and applications that own their own process and their own shapes.
 
@@ -61,14 +62,15 @@ Where shapes live, and how they are versioned and shared, belongs to whoever sup
 
 **Not a repairer.**\
 It never changes, fills in, or coerces a value to make it fit.\
-It judges the value it was given.
+It judges the value it was given, and the caller that submitted the value fixes it.
 
 **Not a network service.**\
 It never listens and never sends.
 
 **Not the owner of every refusal.**\
 It explains why a value does not fit its shape.\
-A refusal for any other reason - a revision that moved, an operation that declined - belongs to the part that refuses.
+A refusal for any other reason - a revision that moved, an operation that declined - belongs to the part that refuses.\
+Even for a misfit, the part that asked decides whether to refuse and owns the refusal; shapecheck gives the verdict and the reason.
 
 ---
 
@@ -82,8 +84,8 @@ Two parts judging the same value against the same shape never disagree, in verdi
 The measure is that the parts which carry shapecheck show no case where one accepts what another refuses.
 
 **Legibility.**\
-Every misfit is fixable from its explanation alone.\
-The measure is that a caller, often an agent, fixes a refused value in one attempt.
+Every misfit is explained completely: where it lies, what was expected there, and what would fit.\
+The measure is that a caller, often an agent, fixes a refused value in one attempt whenever the value can be made to fit.
 
 **Leanness.**\
 It is small enough that no part would rather write its own checker.\
