@@ -148,7 +148,7 @@ Tested by: stage 1's criterion, by `test/contract/declared-shape-validation.test
 **SD7 - How a carrying component runs the corpus.**\
 In operation-call, a fixture host declares, for each case, one operation whose input shape is the case's shape, and a caller invokes it with the case's value as its input.\
 A refused shape makes the declaration fail with the case's problems; a misfit ends the call refused with code `input-misfit` and the case's misfits; a fit reaches the operation.\
-In entity-store, a store is opened, for each case, with one kind whose body shape is the case's shape, and an entity is created with the case's value as its body.\
+In entity-store, a store is opened, for each case, with one kind whose body shape is the case's shape and the largest entity size a store allows, 262144 bytes, which every case's value fits within, and an entity is created with the case's value as its body.\
 A refused shape makes opening fail with the case's problems; a misfit is refused with code `misfit` and the case's misfits; a fit is accepted.\
 Neither component limits an input or a body to objects, and every case crosses AGP whole (SD6), so every case reaches the judgement and its records come back; each component compares the records it returns with the case's, in canonical JSON, byte for byte.\
 Tested by: `E9`, in `operation-call/test/contract/declared-shape-validation.test.js` and `entity-store/test/contract/declared-shape-validation.test.js`.
