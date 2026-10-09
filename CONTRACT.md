@@ -139,11 +139,11 @@ Tested by: `E9`, in `test/contract/declared-shape-validation.test.js`, with a co
 **SD6 - The corpus.**\
 The package ships a corpus in its `corpus/` directory, exported as `@apnex/shape-check/corpus`, so that every component carrying `declared-shape-validation` runs the same cases.\
 Each case is one JSON file holding exactly `description`, a string; `shape`, any JSON value; `value`, any JSON value; and `verdict`, the expected verdict of SD4.\
-Every case can cross AGP both as a request carrying its value and as a refusal carrying its misfits: every integer anywhere in it lies within 9007199254740991 of zero, its `shape` and its `value` each nest at most 20 levels, and its canonical JSON is at most 131072 bytes.\
-A judgement beyond those limits, such as a `const` holding a larger integer, is tested in shape-check's own tests, not in the corpus.\
+Every case can cross AGP both as a request carrying its value and as a refusal carrying its misfits: every integer anywhere in it lies within 9007199254740991 of zero, its `shape` and its `value` each nest at most 20 levels, its `shape` is at most 65536 bytes in canonical JSON, and the whole case at most 131072 bytes.\
+A judgement beyond those limits, such as a `const` holding a larger integer or a shape of more than 65536 bytes, is tested in shape-check's own tests, not in the corpus; the limits are the ones a store and a host admit, so every corpus shape is one both can take.\
 It covers, for every keyword of SD2, a value that fits and one that does not; every problem of SD3; one shape with several problems; ordering under SD5; `enum` and `const` holding objects; and the body shape of zorg's knowledge entry.\
 An agent other than the one that implements shape-check writes it from this section alone.\
-Tested by: stage 1's criterion, by `test/contract/declared-shape-validation.test.js` running every case and checking each against these limits; and `E12`, by `test/contract/public-surface.test.js` reading the corpus as `@apnex/shape-check/corpus`.
+Tested by: stage 1's criterion, by `test/contract/declared-shape-validation.test.js` running every case and checking each against these limits, with a case whose shape is exactly 65536 bytes, an unused `enum` member making up its size, and a value of 0 that fits; and `E12`, by `test/contract/public-surface.test.js` reading the corpus as `@apnex/shape-check/corpus`.
 
 **SD7 - How a carrying component runs the corpus.**\
 In operation-call, a fixture host declares, for each case, one operation whose input shape is the case's shape, and a caller invokes it with the case's value as its input.\
