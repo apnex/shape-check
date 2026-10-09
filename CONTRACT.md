@@ -69,9 +69,10 @@ Tested by: stage 1's criterion and `E9`, in `test/contract/declared-shape-valida
 | `pattern` | a string holding an ECMAScript regular expression, compiled with the `u` flag | strings | the expression matches somewhere in the string |
 | `minLength`, `maxLength` | a non-negative integer | strings | the length, counted in Unicode code points, is at least or at most the number |
 | `minItems`, `maxItems` | a non-negative integer | arrays | the number of items is at least or at most the number |
-| `format` | the string `uri` | strings | the string is an absolute URI: a letter, then letters, digits, `+`, `-` or `.`, then `:`, and no whitespace or control character anywhere |
+| `format` | the string `uri` | strings | the string is an absolute URI: an ASCII letter, then ASCII letters, ASCII digits, `+`, `-` or `.`, then `:`, and no whitespace or control character anywhere |
 
 A non-negative integer here is a JSON number with no fractional part, at least 0 and at most 9007199254740991.\
+For `uri`, a whitespace character is any character ECMAScript's `\s` matches, and a control character is any code point from U+0000 to U+001F or from U+007F to U+009F.\
 `format` is an assertion in this dialect, not an annotation.\
 Two values are equal when they are equal as JSON: numbers by value, so `1` equals `1.0`; objects regardless of the order of their properties.\
 A keyword that applies to one type ignores a value of another type, so a string judged against `minItems` meets it.\
@@ -91,6 +92,8 @@ A shape is refused, and no value is judged against it, when it has any of these 
 | `invalid-pattern` | the document or subschema | `pattern` | a `pattern` is a string that does not compile |
 
 Each problem is a record of exactly those three fields, with `pointer` an RFC 6901 JSON pointer into the shape.\
+A subschema position is each value of `properties`, and the value of `items`, and the value of `additionalProperties` other than `false`; a value there that is not an object is the problem `not-an-object` at that position, never `invalid-value` at its parent, and its siblings are still examined.\
+`invalid-value` is every other keyword value not of the form SD2 gives, such as `properties` that is not an object, or `required` holding a repeated name.\
 When the document is not an object, or its marker is missing or unknown, that one problem is the whole list and nothing else is examined.\
 Otherwise every problem is listed: nothing below a keyword whose value is invalid is examined, and every subschema under a valid `properties`, `items` or `additionalProperties` is.\
 Problems are ordered by pointer as SD5 orders them, then by keyword, then by problem, each compared by Unicode code point.\
