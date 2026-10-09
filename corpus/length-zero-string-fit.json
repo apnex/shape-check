@@ -1,0 +1,12 @@
+{
+  "description": "Zero string bounds accept the empty string.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "minLength": 0,
+    "maxLength": 0
+  },
+  "value": "",
+  "verdict": {
+    "verdict": "fits"
+  }
+}

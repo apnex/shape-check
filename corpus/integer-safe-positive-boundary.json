@@ -1,0 +1,11 @@
+{
+  "description": "The largest permitted case integer fits integer.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "type": "integer"
+  },
+  "value": 9007199254740991,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

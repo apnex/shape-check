@@ -1,0 +1,21 @@
+{
+  "description": "A nonempty array exceeds zero.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "maxItems": 0
+  },
+  "value": [
+    null
+  ],
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "maxItems",
+        "expected": 0,
+        "fit": "an array of length at most 0"
+      }
+    ]
+  }
+}

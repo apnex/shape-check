@@ -1,0 +1,21 @@
+{
+  "description": "An unknown keyword value is not a subschema container.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "mystery": {
+      "$schema": "urn:apnex:shape-check:dialect:1",
+      "pattern": "["
+    }
+  },
+  "value": 1,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "",
+        "keyword": "mystery",
+        "problem": "unknown-keyword"
+      }
+    ]
+  }
+}

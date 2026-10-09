@@ -1,0 +1,15 @@
+{
+  "description": "Null is an allowed enum member.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "enum": [
+      false,
+      null,
+      "x"
+    ]
+  },
+  "value": null,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

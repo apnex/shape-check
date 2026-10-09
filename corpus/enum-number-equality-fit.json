@@ -1,0 +1,13 @@
+{
+  "description": "Enum compares 1 and 1.0 as equal numbers.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "enum": [
+      1
+    ]
+  },
+  "value": 1.0,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

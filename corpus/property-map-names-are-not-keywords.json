@@ -1,0 +1,24 @@
+{
+  "description": "Names in a properties map are data, including the dialect marker and prototype-like strings.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "properties": {
+      "$schema": {
+        "type": "integer"
+      },
+      "__proto__": {
+        "type": "integer"
+      },
+      "constructor": {}
+    },
+    "additionalProperties": false
+  },
+  "value": {
+    "$schema": 1,
+    "__proto__": 2,
+    "constructor": null
+  },
+  "verdict": {
+    "verdict": "fits"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "description": "U+200C is outside both specified control ranges and is not ECMAScript whitespace.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "format": "uri"
+  },
+  "value": "x:‌",
+  "verdict": {
+    "verdict": "fits"
+  }
+}

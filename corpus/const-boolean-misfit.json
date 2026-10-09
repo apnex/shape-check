@@ -1,0 +1,19 @@
+{
+  "description": "A numeric zero does not equal boolean false.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "const": false
+  },
+  "value": 0,
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "const",
+        "expected": false,
+        "fit": "exactly false"
+      }
+    ]
+  }
+}

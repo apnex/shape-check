@@ -1,0 +1,16 @@
+{
+  "description": "A property named in properties is allowed.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "properties": {
+      "ok": {}
+    },
+    "additionalProperties": false
+  },
+  "value": {
+    "ok": 1
+  },
+  "verdict": {
+    "verdict": "fits"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "description": "A letter and a combining mark are two code points.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "minLength": 2,
+    "maxLength": 2
+  },
+  "value": "é",
+  "verdict": {
+    "verdict": "fits"
+  }
+}

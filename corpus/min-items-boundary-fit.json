@@ -1,0 +1,14 @@
+{
+  "description": "The inclusive length bound accepts equality.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "minItems": 2
+  },
+  "value": [
+    0,
+    1
+  ],
+  "verdict": {
+    "verdict": "fits"
+  }
+}

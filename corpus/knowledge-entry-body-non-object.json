@@ -1,0 +1,36 @@
+{
+  "description": "The body type rejects a scalar while object-only constraints ignore it.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "type": "object",
+    "properties": {
+      "pointer": {
+        "type": "string",
+        "format": "uri",
+        "maxLength": 2048
+      },
+      "summary": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      }
+    },
+    "required": [
+      "pointer",
+      "summary"
+    ],
+    "additionalProperties": false
+  },
+  "value": null,
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "type",
+        "expected": "object",
+        "fit": "a value of type object"
+      }
+    ]
+  }
+}

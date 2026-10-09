@@ -2,8 +2,8 @@
 
 Judge whether a value fits a shape declared as data.
 
-**Status: no code yet.**\
-Its vision is ratified and its contract written; the implementation begins with zorg's first slice.
+**Status: built, awaiting certification of zorg's Delta 1, stage 1.**\
+Its contract test runs every case of a corpus written from the contract alone by another agent.
 
 - `VISION.md` - why it exists, and what it will never be.
 - `CONTRACT.md` - what a consumer can depend on, one capability per row.

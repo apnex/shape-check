@@ -160,8 +160,9 @@ Tested by: `E9`, in `operation-call/test/contract/declared-shape-validation.test
 
 ## Reference
 
-Not yet built.\
-This repository, `apnex/shape-check`, private until its first working code: `VISION.md` and, once built, the implementation.
+This repository, `apnex/shape-check`, private until its first working code is certified.\
+The package `@apnex/shape-check` exports `judgeShapeValue`, `prepareShapeDocument` and `SHAPE_DIALECT_ID`, as `export-map.json` records, and `@apnex/shape-check/corpus` holds the corpus of SD6, written from this contract by an agent other than the one that built the implementation.\
+The implementation imports no module particular to one runtime.
 
 ---
 

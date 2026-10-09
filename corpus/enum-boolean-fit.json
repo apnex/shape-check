@@ -1,0 +1,14 @@
+{
+  "description": "A boolean can be selected from an enum.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "enum": [
+      false,
+      null
+    ]
+  },
+  "value": false,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

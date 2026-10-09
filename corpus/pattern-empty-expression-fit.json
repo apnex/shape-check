@@ -1,0 +1,11 @@
+{
+  "description": "The empty regular expression matches an empty string.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "pattern": ""
+  },
+  "value": "",
+  "verdict": {
+    "verdict": "fits"
+  }
+}

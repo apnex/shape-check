@@ -1,0 +1,22 @@
+{
+  "description": "An unknown marker yields one problem without examining other content.",
+  "shape": {
+    "$schema": {},
+    "type": "bad",
+    "mystery": true,
+    "items": {
+      "pattern": "["
+    }
+  },
+  "value": 0,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "",
+        "keyword": "$schema",
+        "problem": "unknown-dialect"
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "description": "Items on an empty array is satisfied.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "items": {
+      "const": 1
+    }
+  },
+  "value": [],
+  "verdict": {
+    "verdict": "fits"
+  }
+}

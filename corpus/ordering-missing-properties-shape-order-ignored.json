@@ -1,0 +1,28 @@
+{
+  "description": "Required misfits are sorted by pointer rather than the required list order.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "required": [
+      "z",
+      "a"
+    ]
+  },
+  "value": {},
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "/a",
+        "keyword": "required",
+        "expected": "a",
+        "fit": "a property named \"a\""
+      },
+      {
+        "pointer": "/z",
+        "keyword": "required",
+        "expected": "z",
+        "fit": "a property named \"z\""
+      }
+    ]
+  }
+}

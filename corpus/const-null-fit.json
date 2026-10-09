@@ -1,0 +1,11 @@
+{
+  "description": "Const accepts null as its value.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "const": null
+  },
+  "value": null,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

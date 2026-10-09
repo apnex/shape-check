@@ -1,0 +1,40 @@
+{
+  "description": "Non-object checks apply recursively at all three kinds of subschema position.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "properties": {
+      "a~/": {
+        "items": false
+      }
+    },
+    "items": {
+      "additionalProperties": 0
+    },
+    "additionalProperties": {
+      "properties": {
+        "": null
+      }
+    }
+  },
+  "value": null,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "/additionalProperties/properties/",
+        "keyword": "",
+        "problem": "not-an-object"
+      },
+      {
+        "pointer": "/items/additionalProperties",
+        "keyword": "",
+        "problem": "not-an-object"
+      },
+      {
+        "pointer": "/properties/a~0~1/items",
+        "keyword": "",
+        "problem": "not-an-object"
+      }
+    ]
+  }
+}

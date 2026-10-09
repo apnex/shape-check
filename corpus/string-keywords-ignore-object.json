@@ -1,0 +1,16 @@
+{
+  "description": "All string-only keywords ignore this non-string value.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "pattern": "^never$",
+    "minLength": 3,
+    "maxLength": 0,
+    "format": "uri"
+  },
+  "value": {
+    "x": 1
+  },
+  "verdict": {
+    "verdict": "fits"
+  }
+}

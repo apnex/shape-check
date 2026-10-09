@@ -1,0 +1,19 @@
+{
+  "description": "Embedded U+FEFF is forbidden anywhere in the URI.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "format": "uri"
+  },
+  "value": "x:a﻿b",
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "format",
+        "expected": "uri",
+        "fit": "an absolute URI, such as https://example.com/page"
+      }
+    ]
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "description": "All array-only keywords ignore this non-array value.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "items": {
+      "const": "never"
+    },
+    "minItems": 3,
+    "maxItems": 0
+  },
+  "value": null,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "description": "Unlisted properties are allowed when additionalProperties is absent.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "properties": {}
+  },
+  "value": {
+    "extra": true
+  },
+  "verdict": {
+    "verdict": "fits"
+  }
+}

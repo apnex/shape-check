@@ -1,0 +1,11 @@
+{
+  "description": "U+200B is neither ECMAScript whitespace nor a control in the specified ranges.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "format": "uri"
+  },
+  "value": "x:​",
+  "verdict": {
+    "verdict": "fits"
+  }
+}

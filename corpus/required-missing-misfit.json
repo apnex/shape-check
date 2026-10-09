@@ -1,0 +1,21 @@
+{
+  "description": "A required property misfit points to its missing location.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "required": [
+      "present"
+    ]
+  },
+  "value": {},
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "/present",
+        "keyword": "required",
+        "expected": "present",
+        "fit": "a property named \"present\""
+      }
+    ]
+  }
+}

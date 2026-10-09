@@ -1,0 +1,15 @@
+{
+  "description": "The distinct values false, zero, and string zero can share an enum.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "enum": [
+      false,
+      0,
+      "0"
+    ]
+  },
+  "value": "0",
+  "verdict": {
+    "verdict": "fits"
+  }
+}

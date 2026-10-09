@@ -1,0 +1,11 @@
+{
+  "description": "An empty required list is valid.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "required": []
+  },
+  "value": {},
+  "verdict": {
+    "verdict": "fits"
+  }
+}

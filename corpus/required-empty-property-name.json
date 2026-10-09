@@ -1,0 +1,21 @@
+{
+  "description": "An empty property name produces the pointer slash.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "required": [
+      ""
+    ]
+  },
+  "value": {},
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "/",
+        "keyword": "required",
+        "expected": "",
+        "fit": "a property named \"\""
+      }
+    ]
+  }
+}

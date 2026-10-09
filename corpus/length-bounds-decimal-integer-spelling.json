@@ -1,0 +1,11 @@
+{
+  "description": "A length bound written as 1.0 is a non-negative integer.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "minLength": 1.0
+  },
+  "value": "x",
+  "verdict": {
+    "verdict": "fits"
+  }
+}

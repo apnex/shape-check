@@ -1,0 +1,17 @@
+{
+  "description": "Present properties are checked against their subschemas.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "properties": {
+      "count": {
+        "type": "integer"
+      }
+    }
+  },
+  "value": {
+    "count": 4
+  },
+  "verdict": {
+    "verdict": "fits"
+  }
+}

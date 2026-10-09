@@ -1,0 +1,11 @@
+{
+  "description": "A number written as 1.0 has no fractional part.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "type": "integer"
+  },
+  "value": 1.0,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

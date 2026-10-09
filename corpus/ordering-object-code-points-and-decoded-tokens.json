@@ -1,0 +1,77 @@
+{
+  "description": "Object names use Unicode code points and decoded tokens, not array indices, UTF-16 units, or escaped-pointer bytes.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "additionalProperties": false
+  },
+  "value": {
+    "2": 0,
+    "10": 0,
+    "😀": 0,
+    "": 0,
+    "~": 0,
+    "/": 0,
+    "a": 0,
+    "A": 0,
+    "": 0
+  },
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "/",
+        "keyword": "additionalProperties",
+        "expected": false,
+        "fit": "no property named \"\""
+      },
+      {
+        "pointer": "/~1",
+        "keyword": "additionalProperties",
+        "expected": false,
+        "fit": "no property named \"/\""
+      },
+      {
+        "pointer": "/10",
+        "keyword": "additionalProperties",
+        "expected": false,
+        "fit": "no property named \"10\""
+      },
+      {
+        "pointer": "/2",
+        "keyword": "additionalProperties",
+        "expected": false,
+        "fit": "no property named \"2\""
+      },
+      {
+        "pointer": "/A",
+        "keyword": "additionalProperties",
+        "expected": false,
+        "fit": "no property named \"A\""
+      },
+      {
+        "pointer": "/a",
+        "keyword": "additionalProperties",
+        "expected": false,
+        "fit": "no property named \"a\""
+      },
+      {
+        "pointer": "/~0",
+        "keyword": "additionalProperties",
+        "expected": false,
+        "fit": "no property named \"~\""
+      },
+      {
+        "pointer": "/",
+        "keyword": "additionalProperties",
+        "expected": false,
+        "fit": "no property named \"\""
+      },
+      {
+        "pointer": "/😀",
+        "keyword": "additionalProperties",
+        "expected": false,
+        "fit": "no property named \"😀\""
+      }
+    ]
+  }
+}

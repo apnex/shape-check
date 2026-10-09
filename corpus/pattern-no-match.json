@@ -1,0 +1,19 @@
+{
+  "description": "Pattern rejects a string without a match.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "pattern": "cat"
+  },
+  "value": "dog",
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "pattern",
+        "expected": "cat",
+        "fit": "a string matching \"cat\""
+      }
+    ]
+  }
+}

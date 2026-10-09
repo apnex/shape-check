@@ -1,0 +1,10 @@
+{
+  "description": "A marked shape with no constraints accepts this JSON value.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1"
+  },
+  "value": 0.5,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

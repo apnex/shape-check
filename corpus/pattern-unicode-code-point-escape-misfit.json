@@ -1,0 +1,19 @@
+{
+  "description": "Pattern text JSON-escapes the regular expression backslash.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "pattern": "^\\u{1F600}$"
+  },
+  "value": "x",
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "pattern",
+        "expected": "^\\u{1F600}$",
+        "fit": "a string matching \"^\\\\u{1F600}$\""
+      }
+    ]
+  }
+}

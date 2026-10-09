@@ -1,0 +1,55 @@
+{
+  "description": "Enum fit text preserves member order, sorts object keys recursively by code point, and JSON-escapes strings.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "enum": [
+      {
+        "z": 0,
+        "a": {
+          "y": 2,
+          "b": 1
+        }
+      },
+      {
+        "😀": 2,
+        "": 1
+      },
+      {
+        "2": "two",
+        "10": "ten"
+      },
+      "line\n\"\\",
+      null
+    ]
+  },
+  "value": false,
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "enum",
+        "expected": [
+          {
+            "z": 0,
+            "a": {
+              "y": 2,
+              "b": 1
+            }
+          },
+          {
+            "😀": 2,
+            "": 1
+          },
+          {
+            "2": "two",
+            "10": "ten"
+          },
+          "line\n\"\\",
+          null
+        ],
+        "fit": "one of {\"a\":{\"b\":1,\"y\":2},\"z\":0}, {\"\":1,\"😀\":2}, {\"10\":\"ten\",\"2\":\"two\"}, \"line\\n\\\"\\\\\", null"
+      }
+    ]
+  }
+}

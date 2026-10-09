@@ -1,0 +1,18 @@
+{
+  "description": "A length bound must be a non-negative integer.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "minLength": null
+  },
+  "value": null,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "",
+        "keyword": "minLength",
+        "problem": "invalid-value"
+      }
+    ]
+  }
+}

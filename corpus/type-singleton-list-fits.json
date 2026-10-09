@@ -1,0 +1,13 @@
+{
+  "description": "A singleton type list is valid.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "type": [
+      "boolean"
+    ]
+  },
+  "value": true,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

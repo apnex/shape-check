@@ -1,0 +1,39 @@
+{
+  "description": "Array child indices sort numerically, including 2 before 10.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "items": {
+      "type": "integer"
+    }
+  },
+  "value": [
+    0,
+    0,
+    "two",
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    "ten"
+  ],
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "/2",
+        "keyword": "type",
+        "expected": "integer",
+        "fit": "a value of type integer"
+      },
+      {
+        "pointer": "/10",
+        "keyword": "type",
+        "expected": "integer",
+        "fit": "a value of type integer"
+      }
+    ]
+  }
+}

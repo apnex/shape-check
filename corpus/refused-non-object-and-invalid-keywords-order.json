@@ -1,0 +1,58 @@
+{
+  "description": "Root keyword problems precede all non-object child problems; shape pointer order overrides insertion order and keyword order across pointers.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "properties": {
+      "z": [],
+      "a": {
+        "required": [
+          "x",
+          "x"
+        ]
+      }
+    },
+    "type": "bad",
+    "items": null,
+    "required": [
+      "x",
+      "x"
+    ],
+    "additionalProperties": true
+  },
+  "value": null,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "",
+        "keyword": "required",
+        "problem": "invalid-value"
+      },
+      {
+        "pointer": "",
+        "keyword": "type",
+        "problem": "invalid-value"
+      },
+      {
+        "pointer": "/additionalProperties",
+        "keyword": "",
+        "problem": "not-an-object"
+      },
+      {
+        "pointer": "/items",
+        "keyword": "",
+        "problem": "not-an-object"
+      },
+      {
+        "pointer": "/properties/a",
+        "keyword": "required",
+        "problem": "invalid-value"
+      },
+      {
+        "pointer": "/properties/z",
+        "keyword": "",
+        "problem": "not-an-object"
+      }
+    ]
+  }
+}

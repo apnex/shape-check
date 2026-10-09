@@ -1,0 +1,12 @@
+{
+  "description": "Zero item bounds accept the empty array.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "minItems": 0,
+    "maxItems": 0
+  },
+  "value": [],
+  "verdict": {
+    "verdict": "fits"
+  }
+}

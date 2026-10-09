@@ -1,0 +1,11 @@
+{
+  "description": "Negative zero is an integer.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "type": "integer"
+  },
+  "value": -0,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

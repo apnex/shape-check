@@ -1,0 +1,11 @@
+{
+  "description": "Const accepts a matching string including JSON escape characters.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "const": "line\n\"\\"
+  },
+  "value": "line\n\"\\",
+  "verdict": {
+    "verdict": "fits"
+  }
+}

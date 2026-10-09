@@ -1,0 +1,15 @@
+{
+  "description": "An empty additionalProperties subschema accepts every extra value.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "additionalProperties": {}
+  },
+  "value": {
+    "extra": [
+      false
+    ]
+  },
+  "verdict": {
+    "verdict": "fits"
+  }
+}

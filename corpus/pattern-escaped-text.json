@@ -1,0 +1,19 @@
+{
+  "description": "A pattern containing a newline and quote uses JSON string escaping in fit text.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "pattern": "\n\""
+  },
+  "value": "x",
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "pattern",
+        "expected": "\n\"",
+        "fit": "a string matching \"\\n\\\"\""
+      }
+    ]
+  }
+}

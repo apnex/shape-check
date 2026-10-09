@@ -1,0 +1,18 @@
+{
+  "description": "False is not an object subschema; the additionalProperties exception does not apply here.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "items": false
+  },
+  "value": null,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "/items",
+        "keyword": "",
+        "problem": "not-an-object"
+      }
+    ]
+  }
+}

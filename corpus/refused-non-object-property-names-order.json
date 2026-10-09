@@ -1,0 +1,56 @@
+{
+  "description": "Non-object properties use decoded names and Unicode code-point ordering, including numeric names and supplementary characters.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "properties": {
+      "😀": [],
+      "": null,
+      "~": 1,
+      "2": true,
+      "10": false,
+      "/": "x",
+      "": null
+    }
+  },
+  "value": null,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "/properties/",
+        "keyword": "",
+        "problem": "not-an-object"
+      },
+      {
+        "pointer": "/properties/~1",
+        "keyword": "",
+        "problem": "not-an-object"
+      },
+      {
+        "pointer": "/properties/10",
+        "keyword": "",
+        "problem": "not-an-object"
+      },
+      {
+        "pointer": "/properties/2",
+        "keyword": "",
+        "problem": "not-an-object"
+      },
+      {
+        "pointer": "/properties/~0",
+        "keyword": "",
+        "problem": "not-an-object"
+      },
+      {
+        "pointer": "/properties/",
+        "keyword": "",
+        "problem": "not-an-object"
+      },
+      {
+        "pointer": "/properties/😀",
+        "keyword": "",
+        "problem": "not-an-object"
+      }
+    ]
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "description": "Number and integer are distinct allowed type names despite their overlap.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "type": [
+      "integer",
+      "number"
+    ]
+  },
+  "value": 0.5,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

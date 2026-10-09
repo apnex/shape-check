@@ -1,0 +1,19 @@
+{
+  "description": "A value of another type does not fit integer.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "type": "integer"
+  },
+  "value": 1.25,
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "type",
+        "expected": "integer",
+        "fit": "a value of type integer"
+      }
+    ]
+  }
+}

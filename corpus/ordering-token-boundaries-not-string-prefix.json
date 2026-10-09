@@ -1,0 +1,51 @@
+{
+  "description": "All descendants of token a sort before sibling token a-; a slash in a name stays within one token.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "properties": {
+      "a": {
+        "properties": {
+          "z": {
+            "const": 0
+          }
+        }
+      },
+      "a-": {
+        "const": 0
+      },
+      "a/b": {
+        "const": 0
+      }
+    }
+  },
+  "value": {
+    "a/b": 1,
+    "a-": 1,
+    "a": {
+      "z": 1
+    }
+  },
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "/a/z",
+        "keyword": "const",
+        "expected": 0,
+        "fit": "exactly 0"
+      },
+      {
+        "pointer": "/a-",
+        "keyword": "const",
+        "expected": 0,
+        "fit": "exactly 0"
+      },
+      {
+        "pointer": "/a~1b",
+        "keyword": "const",
+        "expected": 0,
+        "fit": "exactly 0"
+      }
+    ]
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "description": "Pointer tokens escape tilde and slash; fit text uses JSON string escapes.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "required": [
+      "a~/\"\n\\"
+    ]
+  },
+  "value": {},
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "/a~0~1\"\n\\",
+        "keyword": "required",
+        "expected": "a~/\"\n\\",
+        "fit": "a property named \"a~/\\\"\\n\\\\\""
+      }
+    ]
+  }
+}

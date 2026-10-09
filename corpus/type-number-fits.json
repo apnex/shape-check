@@ -1,0 +1,11 @@
+{
+  "description": "A value of type number fits.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "type": "number"
+  },
+  "value": 1.25,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

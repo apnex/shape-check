@@ -1,0 +1,23 @@
+{
+  "description": "Additional values produce the subschema own keyword, expected value, and fit text.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "additionalProperties": {
+      "type": "integer"
+    }
+  },
+  "value": {
+    "a~/": "two"
+  },
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "/a~0~1",
+        "keyword": "type",
+        "expected": "integer",
+        "fit": "a value of type integer"
+      }
+    ]
+  }
+}

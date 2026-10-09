@@ -1,0 +1,19 @@
+{
+  "description": "U+0085 lies in the explicit control range even though ECMAScript whitespace does not match it.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "format": "uri"
+  },
+  "value": "x:",
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "format",
+        "expected": "uri",
+        "fit": "an absolute URI, such as https://example.com/page"
+      }
+    ]
+  }
+}

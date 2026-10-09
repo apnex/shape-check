@@ -1,0 +1,19 @@
+{
+  "description": "A value of another type does not fit array.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "type": "array"
+  },
+  "value": {},
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "type",
+        "expected": "array",
+        "fit": "a value of type array"
+      }
+    ]
+  }
+}

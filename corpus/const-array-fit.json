@@ -1,0 +1,23 @@
+{
+  "description": "Const accepts an array containing heterogeneous values.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "const": [
+      1,
+      null,
+      {
+        "x": false
+      }
+    ]
+  },
+  "value": [
+    1,
+    null,
+    {
+      "x": false
+    }
+  ],
+  "verdict": {
+    "verdict": "fits"
+  }
+}

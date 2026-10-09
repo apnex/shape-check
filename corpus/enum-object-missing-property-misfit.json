@@ -1,0 +1,31 @@
+{
+  "description": "An object missing an enum member property is not equal to that member.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "enum": [
+      {
+        "a": 1,
+        "b": null
+      }
+    ]
+  },
+  "value": {
+    "a": 1
+  },
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "enum",
+        "expected": [
+          {
+            "a": 1,
+            "b": null
+          }
+        ],
+        "fit": "one of {\"a\":1,\"b\":null}"
+      }
+    ]
+  }
+}

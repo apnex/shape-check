@@ -1,0 +1,19 @@
+{
+  "description": "A nonempty string exceeds zero.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "maxLength": 0
+  },
+  "value": "x",
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "maxLength",
+        "expected": 0,
+        "fit": "a string of length at most 0"
+      }
+    ]
+  }
+}

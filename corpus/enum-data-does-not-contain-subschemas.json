@@ -1,0 +1,19 @@
+{
+  "description": "Schema-looking enum members remain ordinary JSON data.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "enum": [
+      {
+        "$schema": "urn:apnex:shape-check:dialect:1",
+        "type": "invalid"
+      }
+    ]
+  },
+  "value": {
+    "type": "invalid",
+    "$schema": "urn:apnex:shape-check:dialect:1"
+  },
+  "verdict": {
+    "verdict": "fits"
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "description": "Root and intermediate pointers precede their descendants.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "const": null,
+    "properties": {
+      "a": {
+        "const": 0,
+        "properties": {
+          "b": {
+            "type": "integer"
+          }
+        }
+      }
+    }
+  },
+  "value": {
+    "a": {
+      "b": "x"
+    }
+  },
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "const",
+        "expected": null,
+        "fit": "exactly null"
+      },
+      {
+        "pointer": "/a",
+        "keyword": "const",
+        "expected": 0,
+        "fit": "exactly 0"
+      },
+      {
+        "pointer": "/a/b",
+        "keyword": "type",
+        "expected": "integer",
+        "fit": "a value of type integer"
+      }
+    ]
+  }
+}

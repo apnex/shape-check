@@ -1,0 +1,23 @@
+{
+  "description": "Boolean true does not equal number one.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "enum": [
+      1
+    ]
+  },
+  "value": true,
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "enum",
+        "expected": [
+          1
+        ],
+        "fit": "one of 1"
+      }
+    ]
+  }
+}

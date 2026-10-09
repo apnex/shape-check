@@ -1,0 +1,11 @@
+{
+  "description": "Pattern matches a substring without implicit anchors.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "pattern": "cat"
+  },
+  "value": "a cat naps",
+  "verdict": {
+    "verdict": "fits"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "description": "A singleton list keeps its array expected value.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "type": [
+      "boolean"
+    ]
+  },
+  "value": null,
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "type",
+        "expected": [
+          "boolean"
+        ],
+        "fit": "a value of type boolean"
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "description": "With the u flag a dot consumes one supplementary Unicode code point.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "pattern": "^.$"
+  },
+  "value": "😀",
+  "verdict": {
+    "verdict": "fits"
+  }
+}

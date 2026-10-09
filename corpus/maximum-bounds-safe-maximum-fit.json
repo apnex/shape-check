@@ -1,0 +1,12 @@
+{
+  "description": "The maximum safe integer is an allowed maximum bound.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "maxLength": 9007199254740991,
+    "maxItems": 9007199254740991
+  },
+  "value": [],
+  "verdict": {
+    "verdict": "fits"
+  }
+}

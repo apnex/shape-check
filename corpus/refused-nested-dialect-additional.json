@@ -1,0 +1,20 @@
+{
+  "description": "An additionalProperties subschema cannot carry even a null marker.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "additionalProperties": {
+      "$schema": null
+    }
+  },
+  "value": {},
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "/additionalProperties",
+        "keyword": "$schema",
+        "problem": "nested-dialect"
+      }
+    ]
+  }
+}

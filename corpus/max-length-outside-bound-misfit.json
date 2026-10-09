@@ -1,0 +1,19 @@
+{
+  "description": "A length outside the bound produces the specified text.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "maxLength": 2
+  },
+  "value": "abc",
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "maxLength",
+        "expected": 2,
+        "fit": "a string of length at most 2"
+      }
+    ]
+  }
+}

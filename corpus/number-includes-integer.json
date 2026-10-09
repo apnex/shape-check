@@ -1,0 +1,11 @@
+{
+  "description": "The number type accepts an integer.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "type": "number"
+  },
+  "value": 1,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

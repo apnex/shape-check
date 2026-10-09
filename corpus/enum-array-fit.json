@@ -1,0 +1,25 @@
+{
+  "description": "An array can be selected from an enum using recursive JSON equality.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "enum": [
+      [
+        {
+          "z": 2,
+          "a": 1
+        },
+        null
+      ]
+    ]
+  },
+  "value": [
+    {
+      "a": 1,
+      "z": 2
+    },
+    null
+  ],
+  "verdict": {
+    "verdict": "fits"
+  }
+}

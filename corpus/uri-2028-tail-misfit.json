@@ -1,0 +1,19 @@
+{
+  "description": "U+2028 LINE SEPARATOR matches ECMAScript whitespace.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "format": "uri"
+  },
+  "value": "x: ",
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "format",
+        "expected": "uri",
+        "fit": "an absolute URI, such as https://example.com/page"
+      }
+    ]
+  }
+}

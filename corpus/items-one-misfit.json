@@ -1,0 +1,24 @@
+{
+  "description": "An item misfit points to its array index.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "items": {
+      "type": "integer"
+    }
+  },
+  "value": [
+    0,
+    "one"
+  ],
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "/1",
+        "keyword": "type",
+        "expected": "integer",
+        "fit": "a value of type integer"
+      }
+    ]
+  }
+}

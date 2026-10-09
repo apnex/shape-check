@@ -1,0 +1,21 @@
+{
+  "description": "An additional property is reported at its own pointer.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "additionalProperties": false
+  },
+  "value": {
+    "extra": 1
+  },
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "/extra",
+        "keyword": "additionalProperties",
+        "expected": false,
+        "fit": "no property named \"extra\""
+      }
+    ]
+  }
+}

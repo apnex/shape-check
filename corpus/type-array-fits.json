@@ -1,0 +1,11 @@
+{
+  "description": "A value of type array fits.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "type": "array"
+  },
+  "value": [],
+  "verdict": {
+    "verdict": "fits"
+  }
+}

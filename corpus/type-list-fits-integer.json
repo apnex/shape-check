@@ -1,0 +1,14 @@
+{
+  "description": "The first type in the list may match.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "type": [
+      "integer",
+      "string"
+    ]
+  },
+  "value": 3,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

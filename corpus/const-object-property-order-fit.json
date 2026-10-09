@@ -1,0 +1,29 @@
+{
+  "description": "Nested object property order is ignored for const equality.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "const": {
+      "b": {
+        "z": 2,
+        "a": 1
+      },
+      "a": [
+        1,
+        2
+      ]
+    }
+  },
+  "value": {
+    "a": [
+      1,
+      2
+    ],
+    "b": {
+      "a": 1,
+      "z": 2
+    }
+  },
+  "verdict": {
+    "verdict": "fits"
+  }
+}

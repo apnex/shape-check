@@ -1,0 +1,18 @@
+{
+  "description": "The string value at /additionalProperties produces only not-an-object at that position, with an empty keyword.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "additionalProperties": "schema"
+  },
+  "value": null,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "/additionalProperties",
+        "keyword": "",
+        "problem": "not-an-object"
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "description": "Const accepts a matching boolean.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "const": false
+  },
+  "value": false,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

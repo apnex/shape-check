@@ -1,0 +1,24 @@
+{
+  "description": "An invalid properties container is not traversed for nested problems.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "properties": [
+      {
+        "$schema": "urn:apnex:shape-check:dialect:1",
+        "unknown": true,
+        "pattern": "["
+      }
+    ]
+  },
+  "value": {},
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "",
+        "keyword": "properties",
+        "problem": "invalid-value"
+      }
+    ]
+  }
+}

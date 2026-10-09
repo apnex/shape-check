@@ -1,0 +1,24 @@
+{
+  "description": "Missing dialect hides invalid keywords and descendants.",
+  "shape": {
+    "mystery": true,
+    "type": "bad",
+    "properties": {
+      "x": {
+        "$schema": "urn:apnex:shape-check:dialect:1",
+        "pattern": "["
+      }
+    }
+  },
+  "value": 0,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "",
+        "keyword": "$schema",
+        "problem": "missing-dialect"
+      }
+    ]
+  }
+}

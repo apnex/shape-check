@@ -1,0 +1,19 @@
+{
+  "description": "The largest allowed bound is valid and printed in decimal.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "minLength": 9007199254740991
+  },
+  "value": "",
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "minLength",
+        "expected": 9007199254740991,
+        "fit": "a string of length at least 9007199254740991"
+      }
+    ]
+  }
+}

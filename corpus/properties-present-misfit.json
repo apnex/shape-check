@@ -1,0 +1,25 @@
+{
+  "description": "The property subschema supplies the misfit.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "properties": {
+      "count": {
+        "type": "integer"
+      }
+    }
+  },
+  "value": {
+    "count": "4"
+  },
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "/count",
+        "keyword": "type",
+        "expected": "integer",
+        "fit": "a value of type integer"
+      }
+    ]
+  }
+}

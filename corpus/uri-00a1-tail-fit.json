@@ -1,0 +1,11 @@
+{
+  "description": "U+00A1 is outside the control ranges and is not whitespace.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "format": "uri"
+  },
+  "value": "x:¡",
+  "verdict": {
+    "verdict": "fits"
+  }
+}

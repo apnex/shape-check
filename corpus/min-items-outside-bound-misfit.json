@@ -1,0 +1,21 @@
+{
+  "description": "A length outside the bound produces the specified text.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "minItems": 2
+  },
+  "value": [
+    0
+  ],
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "minItems",
+        "expected": 2,
+        "fit": "an array of length at least 2"
+      }
+    ]
+  }
+}

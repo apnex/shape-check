@@ -1,0 +1,38 @@
+{
+  "description": "Every subschema under valid containers is examined even with absent properties and a scalar value.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "properties": {
+      "absent": {
+        "pattern": "["
+      }
+    },
+    "items": {
+      "type": "bad"
+    },
+    "additionalProperties": {
+      "unknown": 1
+    }
+  },
+  "value": 0,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "/additionalProperties",
+        "keyword": "unknown",
+        "problem": "unknown-keyword"
+      },
+      {
+        "pointer": "/items",
+        "keyword": "type",
+        "problem": "invalid-value"
+      },
+      {
+        "pointer": "/properties/absent",
+        "keyword": "pattern",
+        "problem": "invalid-pattern"
+      }
+    ]
+  }
+}

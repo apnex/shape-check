@@ -1,0 +1,19 @@
+{
+  "description": "U+200B is not an ASCII scheme character even though it is allowed in the tail.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "format": "uri"
+  },
+  "value": "x​:entry",
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "format",
+        "expected": "uri",
+        "fit": "an absolute URI, such as https://example.com/page"
+      }
+    ]
+  }
+}

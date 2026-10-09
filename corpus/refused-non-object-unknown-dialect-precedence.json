@@ -1,0 +1,22 @@
+{
+  "description": "An unknown root marker suppresses non-object subschema problems.",
+  "shape": {
+    "$schema": "unknown",
+    "items": true,
+    "additionalProperties": null,
+    "properties": {
+      "x": []
+    }
+  },
+  "value": null,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "",
+        "keyword": "$schema",
+        "problem": "unknown-dialect"
+      }
+    ]
+  }
+}

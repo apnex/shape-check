@@ -1,0 +1,28 @@
+{
+  "description": "Array order is significant to const.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "const": [
+      1,
+      2
+    ]
+  },
+  "value": [
+    2,
+    1
+  ],
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "const",
+        "expected": [
+          1,
+          2
+        ],
+        "fit": "exactly [1,2]"
+      }
+    ]
+  }
+}

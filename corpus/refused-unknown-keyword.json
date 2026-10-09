@@ -1,0 +1,18 @@
+{
+  "description": "A keyword outside SD2 is refused.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "minimum": 0
+  },
+  "value": 1,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "",
+        "keyword": "minimum",
+        "problem": "unknown-keyword"
+      }
+    ]
+  }
+}

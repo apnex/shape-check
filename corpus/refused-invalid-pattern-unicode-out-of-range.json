@@ -1,0 +1,18 @@
+{
+  "description": "A string pattern that cannot compile with u is refused.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "pattern": "\\u{110000}"
+  },
+  "value": 0,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "",
+        "keyword": "pattern",
+        "problem": "invalid-pattern"
+      }
+    ]
+  }
+}

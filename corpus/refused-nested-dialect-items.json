@@ -1,0 +1,20 @@
+{
+  "description": "An items subschema cannot carry a dialect marker.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "items": {
+      "$schema": "not-even-dialect-one"
+    }
+  },
+  "value": [],
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "/items",
+        "keyword": "$schema",
+        "problem": "nested-dialect"
+      }
+    ]
+  }
+}

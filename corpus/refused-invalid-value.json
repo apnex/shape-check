@@ -1,0 +1,18 @@
+{
+  "description": "A keyword value of the wrong form is refused even if inapplicable to the value.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "minLength": -1
+  },
+  "value": null,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "",
+        "keyword": "minLength",
+        "problem": "invalid-value"
+      }
+    ]
+  }
+}

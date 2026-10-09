@@ -1,0 +1,15 @@
+{
+  "description": "An empty items subschema accepts heterogeneous items.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "items": {}
+  },
+  "value": [
+    null,
+    {},
+    "x"
+  ],
+  "verdict": {
+    "verdict": "fits"
+  }
+}

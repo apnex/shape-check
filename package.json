@@ -19,13 +19,15 @@
     ".": {
       "types": "./dist/index.d.ts",
       "default": "./dist/index.js"
-    }
+    },
+    "./corpus": "./dist/corpus.json"
   },
   "files": [
-    "dist"
+    "dist",
+    "corpus"
   ],
   "scripts": {
-    "build": "tsc -p .",
+    "build": "tsc -p . && node tools/bundle-shape-corpus.mjs",
     "test": "npm run build && node --test \"test/**/*.test.js\"",
     "docs:check": "tools/check-docs.sh"
   },

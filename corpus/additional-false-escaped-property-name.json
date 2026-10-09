@@ -1,0 +1,21 @@
+{
+  "description": "Additional property diagnostics escape the pointer and JSON name independently.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "additionalProperties": false
+  },
+  "value": {
+    "a~/\"\n\\": 1
+  },
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "/a~0~1\"\n\\",
+        "keyword": "additionalProperties",
+        "expected": false,
+        "fit": "no property named \"a~/\\\"\\n\\\\\""
+      }
+    ]
+  }
+}

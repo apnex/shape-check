@@ -1,0 +1,65 @@
+{
+  "description": "Every failing keyword at one location is reported in code-point order.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "type": "integer",
+    "pattern": "^z$",
+    "minLength": 3,
+    "maxLength": 0,
+    "format": "uri",
+    "enum": [
+      null
+    ],
+    "const": 0
+  },
+  "value": "x",
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "const",
+        "expected": 0,
+        "fit": "exactly 0"
+      },
+      {
+        "pointer": "",
+        "keyword": "enum",
+        "expected": [
+          null
+        ],
+        "fit": "one of null"
+      },
+      {
+        "pointer": "",
+        "keyword": "format",
+        "expected": "uri",
+        "fit": "an absolute URI, such as https://example.com/page"
+      },
+      {
+        "pointer": "",
+        "keyword": "maxLength",
+        "expected": 0,
+        "fit": "a string of length at most 0"
+      },
+      {
+        "pointer": "",
+        "keyword": "minLength",
+        "expected": 3,
+        "fit": "a string of length at least 3"
+      },
+      {
+        "pointer": "",
+        "keyword": "pattern",
+        "expected": "^z$",
+        "fit": "a string matching \"^z$\""
+      },
+      {
+        "pointer": "",
+        "keyword": "type",
+        "expected": "integer",
+        "fit": "a value of type integer"
+      }
+    ]
+  }
+}

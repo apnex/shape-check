@@ -1,0 +1,18 @@
+{
+  "description": "The keyword value is outside the form permitted by SD2.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "type": "date"
+  },
+  "value": null,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "",
+        "keyword": "type",
+        "problem": "invalid-value"
+      }
+    ]
+  }
+}

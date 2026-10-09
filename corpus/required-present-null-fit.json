@@ -1,0 +1,15 @@
+{
+  "description": "A required property may be present with null.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "required": [
+      "present"
+    ]
+  },
+  "value": {
+    "present": null
+  },
+  "verdict": {
+    "verdict": "fits"
+  }
+}

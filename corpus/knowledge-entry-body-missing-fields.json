@@ -1,0 +1,42 @@
+{
+  "description": "Both required field locations are reported.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "type": "object",
+    "properties": {
+      "pointer": {
+        "type": "string",
+        "format": "uri",
+        "maxLength": 2048
+      },
+      "summary": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      }
+    },
+    "required": [
+      "pointer",
+      "summary"
+    ],
+    "additionalProperties": false
+  },
+  "value": {},
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "/pointer",
+        "keyword": "required",
+        "expected": "pointer",
+        "fit": "a property named \"pointer\""
+      },
+      {
+        "pointer": "/summary",
+        "keyword": "required",
+        "expected": "summary",
+        "fit": "a property named \"summary\""
+      }
+    ]
+  }
+}

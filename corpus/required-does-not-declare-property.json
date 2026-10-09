@@ -1,0 +1,24 @@
+{
+  "description": "A required name is still additional if it is not named in properties.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "required": [
+      "x"
+    ],
+    "additionalProperties": false
+  },
+  "value": {
+    "x": 1
+  },
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "/x",
+        "keyword": "additionalProperties",
+        "expected": false,
+        "fit": "no property named \"x\""
+      }
+    ]
+  }
+}

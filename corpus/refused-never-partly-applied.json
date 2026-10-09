@@ -1,0 +1,23 @@
+{
+  "description": "Shape refusal takes precedence over value misfits elsewhere.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "type": "string",
+    "properties": {
+      "absent": {
+        "mystery": true
+      }
+    }
+  },
+  "value": 3,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "/properties/absent",
+        "keyword": "mystery",
+        "problem": "unknown-keyword"
+      }
+    ]
+  }
+}

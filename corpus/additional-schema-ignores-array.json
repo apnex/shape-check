@@ -1,0 +1,15 @@
+{
+  "description": "An additionalProperties subschema also ignores an array.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "additionalProperties": {
+      "const": "never"
+    }
+  },
+  "value": [
+    1
+  ],
+  "verdict": {
+    "verdict": "fits"
+  }
+}

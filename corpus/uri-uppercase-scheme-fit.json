@@ -1,0 +1,11 @@
+{
+  "description": "The URI satisfies the exact scheme and whitespace/control rule.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "format": "uri"
+  },
+  "value": "HTTPS://example.com",
+  "verdict": {
+    "verdict": "fits"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "description": "Const null rejects an object.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "const": null
+  },
+  "value": {},
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "const",
+        "expected": null,
+        "fit": "exactly null"
+      }
+    ]
+  }
+}

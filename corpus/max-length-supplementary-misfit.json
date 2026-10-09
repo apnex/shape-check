@@ -1,0 +1,19 @@
+{
+  "description": "An ASCII letter and a supplementary character count as two code points.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "maxLength": 1
+  },
+  "value": "a😀",
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "maxLength",
+        "expected": 1,
+        "fit": "a string of length at most 1"
+      }
+    ]
+  }
+}

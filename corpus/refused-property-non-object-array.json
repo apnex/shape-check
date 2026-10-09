@@ -1,0 +1,26 @@
+{
+  "description": "The array value at /properties/x produces only not-an-object at that position, with an empty keyword.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "properties": {
+      "x": [
+        {
+          "$schema": "urn:apnex:shape-check:dialect:1",
+          "pattern": "[",
+          "unknown": true
+        }
+      ]
+    }
+  },
+  "value": null,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "/properties/x",
+        "keyword": "",
+        "problem": "not-an-object"
+      }
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "description": "Array element order remains significant for JSON equality.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "enum": [
+      [
+        1,
+        2
+      ]
+    ]
+  },
+  "value": [
+    2,
+    1
+  ],
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "enum",
+        "expected": [
+          [
+            1,
+            2
+          ]
+        ],
+        "fit": "one of [1,2]"
+      }
+    ]
+  }
+}

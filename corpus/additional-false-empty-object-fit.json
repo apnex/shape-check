@@ -1,0 +1,11 @@
+{
+  "description": "No additional properties exist on an empty object.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "additionalProperties": false
+  },
+  "value": {},
+  "verdict": {
+    "verdict": "fits"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "description": "Additional values may fit an additionalProperties subschema.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "properties": {
+      "named": {
+        "type": "string"
+      }
+    },
+    "additionalProperties": {
+      "type": "integer"
+    }
+  },
+  "value": {
+    "named": "ok",
+    "extra": 2
+  },
+  "verdict": {
+    "verdict": "fits"
+  }
+}

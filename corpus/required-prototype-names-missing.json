@@ -1,0 +1,35 @@
+{
+  "description": "Prototype-like names are missing when no JSON property has that name.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "required": [
+      "toString",
+      "__proto__",
+      "constructor"
+    ]
+  },
+  "value": {},
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "/__proto__",
+        "keyword": "required",
+        "expected": "__proto__",
+        "fit": "a property named \"__proto__\""
+      },
+      {
+        "pointer": "/constructor",
+        "keyword": "required",
+        "expected": "constructor",
+        "fit": "a property named \"constructor\""
+      },
+      {
+        "pointer": "/toString",
+        "keyword": "required",
+        "expected": "toString",
+        "fit": "a property named \"toString\""
+      }
+    ]
+  }
+}

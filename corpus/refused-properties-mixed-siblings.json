@@ -1,0 +1,48 @@
+{
+  "description": "Non-object properties do not hide valid siblings or problems in object-valued siblings, even when the value has no properties.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "properties": {
+      "z": {
+        "type": "string"
+      },
+      "d": {
+        "pattern": "["
+      },
+      "c": null,
+      "b": {
+        "items": {
+          "type": "bad"
+        }
+      },
+      "a": true,
+      "": {}
+    }
+  },
+  "value": {},
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "/properties/a",
+        "keyword": "",
+        "problem": "not-an-object"
+      },
+      {
+        "pointer": "/properties/b/items",
+        "keyword": "type",
+        "problem": "invalid-value"
+      },
+      {
+        "pointer": "/properties/c",
+        "keyword": "",
+        "problem": "not-an-object"
+      },
+      {
+        "pointer": "/properties/d",
+        "keyword": "pattern",
+        "problem": "invalid-pattern"
+      }
+    ]
+  }
+}

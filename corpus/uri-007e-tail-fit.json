@@ -1,0 +1,11 @@
+{
+  "description": "U+007E is immediately below the second control range and is not whitespace.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "format": "uri"
+  },
+  "value": "x:~",
+  "verdict": {
+    "verdict": "fits"
+  }
+}

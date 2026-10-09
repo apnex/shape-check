@@ -1,0 +1,21 @@
+{
+  "description": "All object-only keywords ignore this non-object value.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "properties": {
+      "x": {
+        "const": "never"
+      }
+    },
+    "required": [
+      "x"
+    ],
+    "additionalProperties": false
+  },
+  "value": [
+    1
+  ],
+  "verdict": {
+    "verdict": "fits"
+  }
+}

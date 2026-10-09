@@ -1,0 +1,18 @@
+{
+  "description": "The null value at /items produces only not-an-object at that position, with an empty keyword.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "items": null
+  },
+  "value": null,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "/items",
+        "keyword": "",
+        "problem": "not-an-object"
+      }
+    ]
+  }
+}

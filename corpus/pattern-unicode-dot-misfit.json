@@ -1,0 +1,19 @@
+{
+  "description": "Two supplementary characters do not match one anchored dot.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "pattern": "^.$"
+  },
+  "value": "😀😀",
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "pattern",
+        "expected": "^.$",
+        "fit": "a string matching \"^.$\""
+      }
+    ]
+  }
+}

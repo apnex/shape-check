@@ -1,0 +1,25 @@
+{
+  "description": "An embedded document still carrying its marker is refused.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "properties": {
+      "body": {
+        "$schema": "urn:apnex:shape-check:dialect:1",
+        "type": "string"
+      }
+    }
+  },
+  "value": {
+    "body": 0
+  },
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "/properties/body",
+        "keyword": "$schema",
+        "problem": "nested-dialect"
+      }
+    ]
+  }
+}

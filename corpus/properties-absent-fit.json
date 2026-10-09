@@ -1,0 +1,15 @@
+{
+  "description": "Properties does not require an absent property.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "properties": {
+      "count": {
+        "type": "integer"
+      }
+    }
+  },
+  "value": {},
+  "verdict": {
+    "verdict": "fits"
+  }
+}

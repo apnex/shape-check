@@ -1,0 +1,19 @@
+{
+  "description": "A value of another type does not fit boolean.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "type": "boolean"
+  },
+  "value": 0,
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "type",
+        "expected": "boolean",
+        "fit": "a value of type boolean"
+      }
+    ]
+  }
+}

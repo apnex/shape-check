@@ -1,0 +1,19 @@
+{
+  "description": "Const string text uses JSON escapes for quote, backslash, tab, newline and control.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "const": "\"\\\t\n\u0001"
+  },
+  "value": "",
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "const",
+        "expected": "\"\\\t\n\u0001",
+        "fit": "exactly \"\\\"\\\\\\t\\n\\u0001\""
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "description": "An extra property, invalid URI, and empty summary each produce a misfit.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "type": "object",
+    "properties": {
+      "pointer": {
+        "type": "string",
+        "format": "uri",
+        "maxLength": 2048
+      },
+      "summary": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      }
+    },
+    "required": [
+      "pointer",
+      "summary"
+    ],
+    "additionalProperties": false
+  },
+  "value": {
+    "pointer": "relative",
+    "summary": "",
+    "extra~/": 1
+  },
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "/extra~0~1",
+        "keyword": "additionalProperties",
+        "expected": false,
+        "fit": "no property named \"extra~/\""
+      },
+      {
+        "pointer": "/pointer",
+        "keyword": "format",
+        "expected": "uri",
+        "fit": "an absolute URI, such as https://example.com/page"
+      },
+      {
+        "pointer": "/summary",
+        "keyword": "minLength",
+        "expected": 1,
+        "fit": "a string of length at least 1"
+      }
+    ]
+  }
+}

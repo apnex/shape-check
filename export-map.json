@@ -1,0 +1,16 @@
+{
+  "package": "@apnex/shape-check",
+  "paths": {
+    ".": {
+      "exports": {
+        "judgeShapeValue": { "part": "shape-check", "serves": ["declared-shape-validation"] },
+        "prepareShapeDocument": { "part": "shape-check", "serves": ["declared-shape-validation"] },
+        "SHAPE_DIALECT_ID": { "part": "shape-check", "serves": ["declared-shape-validation"] }
+      }
+    },
+    "./corpus": {
+      "data": { "part": "shape-check", "serves": ["declared-shape-validation"] }
+    }
+  },
+  "deferred": {}
+}

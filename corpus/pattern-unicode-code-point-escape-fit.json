@@ -1,0 +1,11 @@
+{
+  "description": "A braced Unicode escape is interpreted with the u flag.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "pattern": "^\\u{1F600}$"
+  },
+  "value": "😀",
+  "verdict": {
+    "verdict": "fits"
+  }
+}

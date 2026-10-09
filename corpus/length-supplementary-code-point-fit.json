@@ -1,0 +1,12 @@
+{
+  "description": "One supplementary character counts as one code point, not two UTF-16 units.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "minLength": 1,
+    "maxLength": 1
+  },
+  "value": "😀",
+  "verdict": {
+    "verdict": "fits"
+  }
+}

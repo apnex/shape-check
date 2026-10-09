@@ -1,0 +1,27 @@
+{
+  "description": "The type explanation preserves the given list order.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "type": [
+      "null",
+      "string",
+      "integer"
+    ]
+  },
+  "value": false,
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "type",
+        "expected": [
+          "null",
+          "string",
+          "integer"
+        ],
+        "fit": "a value of type null or string or integer"
+      }
+    ]
+  }
+}

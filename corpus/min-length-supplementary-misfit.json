@@ -1,0 +1,19 @@
+{
+  "description": "One supplementary code point is shorter than two.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "minLength": 2
+  },
+  "value": "😀",
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "minLength",
+        "expected": 2,
+        "fit": "a string of length at least 2"
+      }
+    ]
+  }
+}

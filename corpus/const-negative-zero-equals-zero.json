@@ -1,0 +1,11 @@
+{
+  "description": "Negative zero equals zero as a JSON number.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "const": 0
+  },
+  "value": -0,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

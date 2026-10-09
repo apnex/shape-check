@@ -1,0 +1,18 @@
+{
+  "description": "An empty subschema accepts any property value.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "properties": {
+      "body": {}
+    }
+  },
+  "value": {
+    "body": [
+      null,
+      1
+    ]
+  },
+  "verdict": {
+    "verdict": "fits"
+  }
+}

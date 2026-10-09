@@ -1,0 +1,15 @@
+{
+  "description": "A non-object document yields only not-an-object.",
+  "shape": 3,
+  "value": null,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "",
+        "keyword": "",
+        "problem": "not-an-object"
+      }
+    ]
+  }
+}

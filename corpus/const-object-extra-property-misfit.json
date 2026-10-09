@@ -1,0 +1,26 @@
+{
+  "description": "Const requires equality of the entire object.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "const": {
+      "a": 1
+    }
+  },
+  "value": {
+    "a": 1,
+    "b": 2
+  },
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "const",
+        "expected": {
+          "a": 1
+        },
+        "fit": "exactly {\"a\":1}"
+      }
+    ]
+  }
+}

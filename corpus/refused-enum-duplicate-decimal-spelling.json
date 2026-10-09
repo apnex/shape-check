@@ -1,0 +1,21 @@
+{
+  "description": "Numbers 1 and 1.0 are duplicate enum values.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "enum": [
+      1,
+      1.0
+    ]
+  },
+  "value": null,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "",
+        "keyword": "enum",
+        "problem": "invalid-value"
+      }
+    ]
+  }
+}

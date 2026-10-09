@@ -1,0 +1,19 @@
+{
+  "description": "Schema-looking data inside const is not traversed as a subschema.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "const": {
+      "$schema": "urn:apnex:shape-check:dialect:1",
+      "pattern": "[",
+      "unknown": true
+    }
+  },
+  "value": {
+    "unknown": true,
+    "pattern": "[",
+    "$schema": "urn:apnex:shape-check:dialect:1"
+  },
+  "verdict": {
+    "verdict": "fits"
+  }
+}

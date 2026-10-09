@@ -1,0 +1,108 @@
+{
+  "description": "All problems are returned with ancestor pointers first, then code-point keyword and property order.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "zz": 1,
+    "type": "bad",
+    "pattern": "[",
+    "additionalProperties": {
+      "unknown": true
+    },
+    "items": {
+      "$schema": "urn:apnex:shape-check:dialect:1",
+      "type": "bad",
+      "pattern": "["
+    },
+    "properties": {
+      "2": {
+        "z": true
+      },
+      "10": {
+        "z": true
+      },
+      "😀": {
+        "z": true
+      },
+      "": {
+        "z": true
+      },
+      "a~/": {
+        "pattern": "[",
+        "items": {
+          "extra": true
+        }
+      }
+    }
+  },
+  "value": null,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "",
+        "keyword": "pattern",
+        "problem": "invalid-pattern"
+      },
+      {
+        "pointer": "",
+        "keyword": "type",
+        "problem": "invalid-value"
+      },
+      {
+        "pointer": "",
+        "keyword": "zz",
+        "problem": "unknown-keyword"
+      },
+      {
+        "pointer": "/additionalProperties",
+        "keyword": "unknown",
+        "problem": "unknown-keyword"
+      },
+      {
+        "pointer": "/items",
+        "keyword": "$schema",
+        "problem": "nested-dialect"
+      },
+      {
+        "pointer": "/items",
+        "keyword": "pattern",
+        "problem": "invalid-pattern"
+      },
+      {
+        "pointer": "/items",
+        "keyword": "type",
+        "problem": "invalid-value"
+      },
+      {
+        "pointer": "/properties/10",
+        "keyword": "z",
+        "problem": "unknown-keyword"
+      },
+      {
+        "pointer": "/properties/2",
+        "keyword": "z",
+        "problem": "unknown-keyword"
+      },
+      {
+        "pointer": "/properties/a~0~1",
+        "keyword": "pattern",
+        "problem": "invalid-pattern"
+      },
+      {
+        "pointer": "/properties/a~0~1/items",
+        "keyword": "extra",
+        "problem": "unknown-keyword"
+      },
+      {
+        "pointer": "/properties/",
+        "keyword": "z",
+        "problem": "unknown-keyword"
+      },
+      {
+        "pointer": "/properties/😀",
+        "keyword": "z",
+        "problem": "unknown-keyword"
+      }
+    ]
+  }
+}

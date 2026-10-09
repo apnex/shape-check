@@ -1,0 +1,11 @@
+{
+  "description": "Const compares a decimal spelling to an integer by numeric value.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "const": 1
+  },
+  "value": 1.0,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

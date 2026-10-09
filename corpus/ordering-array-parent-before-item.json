@@ -1,0 +1,30 @@
+{
+  "description": "A root array length failure precedes an item failure.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "items": {
+      "const": 0
+    },
+    "maxItems": 0
+  },
+  "value": [
+    1
+  ],
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "maxItems",
+        "expected": 0,
+        "fit": "an array of length at most 0"
+      },
+      {
+        "pointer": "/0",
+        "keyword": "const",
+        "expected": 0,
+        "fit": "exactly 0"
+      }
+    ]
+  }
+}

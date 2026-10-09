@@ -1,0 +1,35 @@
+{
+  "description": "Const text sorts nested keys by code point and JSON-escapes string contents.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "const": {
+      "z": "line\n\"\\",
+      "a": {
+        "2": 2,
+        "10": 10,
+        "😀": 2,
+        "": 1
+      }
+    }
+  },
+  "value": {},
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "const",
+        "expected": {
+          "z": "line\n\"\\",
+          "a": {
+            "2": 2,
+            "10": 10,
+            "😀": 2,
+            "": 1
+          }
+        },
+        "fit": "exactly {\"a\":{\"10\":10,\"2\":2,\"\":1,\"😀\":2},\"z\":\"line\\n\\\"\\\\\"}"
+      }
+    ]
+  }
+}

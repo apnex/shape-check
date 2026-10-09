@@ -1,0 +1,19 @@
+{
+  "description": "Object member insertion order does not affect enum equality.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "enum": [
+      {
+        "b": 2,
+        "a": 1
+      }
+    ]
+  },
+  "value": {
+    "a": 1,
+    "b": 2
+  },
+  "verdict": {
+    "verdict": "fits"
+  }
+}

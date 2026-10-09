@@ -1,0 +1,21 @@
+{
+  "description": "Invalid keyword values are not inspected as shapes.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "required": {
+      "$schema": "bad",
+      "mystery": 0
+    }
+  },
+  "value": {},
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "",
+        "keyword": "required",
+        "problem": "invalid-value"
+      }
+    ]
+  }
+}

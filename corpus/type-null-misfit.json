@@ -1,0 +1,19 @@
+{
+  "description": "A value of another type does not fit null.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "type": "null"
+  },
+  "value": "null",
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "type",
+        "expected": "null",
+        "fit": "a value of type null"
+      }
+    ]
+  }
+}
