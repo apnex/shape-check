@@ -11,7 +11,7 @@ related: [C0, A3]
 
 # shapecheck
 
-Draft registry entry, admitted to zorg's component set by the director's ruling `D2`.\
+Draft registry entry, admitted to zorg's component set by the director's ruling `D2` in zorg's `docs/DECISIONS.md`.\
 The id is unminted on purpose; one is minted only when the entry is admitted to the registry.
 
 ---
@@ -36,14 +36,14 @@ The trait column names any trait a system takes on by using the capability.
 
 shapecheck holds nothing between judgements, coordinates no actors and contains no model, so it brings no trait.
 
-Owed before it is built: the language shapes are written in, how a shape states its version, and the exact form of a misfit explanation (`docs/ARCHITECTURE-TARGET.md`, owed and open).
+Owed before it is built: the language shapes are written in, how a shape states its version, and the exact form of a misfit explanation (zorg's `docs/ARCHITECTURE-TARGET.md`, owed and open).
 
 ---
 
 ## Reference
 
 Not yet built.\
-Vision: `shapecheck/VISION.md` in the zorg repository, which will hold the implementation until the component earns a repository of its own.
+This repository, `apnex/shapecheck`, private until its first working code: `VISION.md` and, once built, the implementation.
 
 ---
 
