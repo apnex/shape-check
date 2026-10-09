@@ -89,4 +89,4 @@ Internal and sovereign, so a fit gap has somewhere to go.
 **Consumes, through a declared contract:** nothing.
 
 **Composed-by:** nothing yet.\
-opcall and entitystore carry its capability.
+Its capability is carried by opcall and entitystore.
