@@ -4,4 +4,4 @@
  */
 export { judgeShapeValue, prepareShapeDocument, type PreparedShape } from "./judge-shape-value.js";
 export { SHAPE_DIALECT_ID } from "./shape-dialect.js";
-export type { JsonObject, JsonValue, ShapeMisfit, ShapeProblem, ShapeProblemCode, ShapeVerdict } from "./shape-verdict.js";
+export type { JsonInput, JsonObject, JsonValue, ShapeMisfit, ShapeProblem, ShapeProblemCode, ShapeVerdict } from "./shape-verdict.js";

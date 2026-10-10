@@ -8,6 +8,9 @@ export type JsonValue = null | boolean | number | string | JsonValue[] | JsonObj
 /** A JSON object, as parsed from JSON text. */
 export type JsonObject = { [name: string]: JsonValue };
 
+/** A JSON value as a caller may hold it: its arrays and objects may be read-only, as frozen constants are. */
+export type JsonInput = null | boolean | number | string | readonly JsonInput[] | { readonly [name: string]: JsonInput };
+
 /** One step into a JSON value: a property name, or an array index as a number. */
 export type JsonPathToken = string | number;
 
