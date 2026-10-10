@@ -11,6 +11,6 @@ const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..", ".
 test("a read-only shape and value type-check against the public entry point", () => {
 	const tsc = path.join(root, "node_modules", ".bin", "tsc");
 	const fixture = path.join(root, "test", "types", "readonly-shape-consumer.mts");
-	const run = () => execFileSync(tsc, ["--noEmit", "--strict", "--module", "NodeNext", "--moduleResolution", "NodeNext", "--target", "ES2022", "--types", "node", fixture], { cwd: root, stdio: "pipe" });
+	const run = () => execFileSync(tsc, ["--noEmit", "--strict", "--module", "NodeNext", "--moduleResolution", "NodeNext", "--target", "ES2022", "--types", "node", fixture], { cwd: root, stdio: "inherit" });
 	assert.doesNotThrow(run, "the consumer does not compile");
 });
