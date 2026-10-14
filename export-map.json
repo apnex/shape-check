@@ -5,7 +5,15 @@
       "exports": {
         "judgeShapeValue": { "part": "shape-check", "serves": ["declared-shape-validation"] },
         "prepareShapeDocument": { "part": "shape-check", "serves": ["declared-shape-validation"] },
-        "SHAPE_DIALECT_ID": { "part": "shape-check", "serves": ["declared-shape-validation"] }
+        "SHAPE_DIALECT_ID": { "part": "shape-check", "serves": ["declared-shape-validation"] },
+        "readPlainJson": { "part": "shape-check", "serves": ["plain-json-value"] },
+        "observePromises": { "part": "shape-check", "serves": ["plain-json-value"] },
+        "snapshotJson": { "part": "shape-check", "serves": ["plain-json-value"] },
+        "toCanonicalJson": { "part": "shape-check", "serves": ["plain-json-value"] },
+        "utf8ByteLength": { "part": "shape-check", "serves": ["plain-json-value"] },
+        "nestingDepth": { "part": "shape-check", "serves": ["plain-json-value"] },
+        "firstUnsafeInteger": { "part": "shape-check", "serves": ["plain-json-value"] },
+        "SAFE_INTEGER_LIMIT": { "part": "shape-check", "serves": ["plain-json-value"] }
       }
     },
     "./corpus": {

@@ -2,7 +2,7 @@
  * Canonical JSON (CONTRACT.md, SD4): no whitespace, an object's properties ordered by the Unicode code
  * points of their names, and strings and numbers written as ECMAScript's JSON.stringify writes them.
  */
-import type { JsonValue } from "./shape-verdict.js";
+import type { JsonInput, JsonValue } from "./shape-verdict.js";
 
 /** Compares two strings by Unicode code point, not by UTF-16 code unit; a prefix sorts first. */
 export function compareByCodePoint(a: string, b: string): number {
@@ -16,14 +16,42 @@ export function compareByCodePoint(a: string, b: string): number {
 	return left.length - right.length;
 }
 
-/** Writes a JSON value as canonical JSON text. */
-export function toCanonicalJson(value: JsonValue): string {
-	if (Array.isArray(value)) return `[${value.map(toCanonicalJson).join(",")}]`;
-	if (value !== null && typeof value === "object") {
-		const names = Object.keys(value).sort(compareByCodePoint);
-		return `{${names.map((name) => `${JSON.stringify(name)}:${toCanonicalJson(value[name] as JsonValue)}`).join(",")}}`;
+/**
+ * Writes a JSON value as canonical JSON text (SD4, SD8), keeping its own stack rather than recursing, so a
+ * value of any depth is written; `-0` is written `0`, as JSON.stringify writes it.
+ */
+export function toCanonicalJson(value: JsonInput): string {
+	const out: string[] = [];
+	// Each entry is text to write as it stands, or a value to write; entries are popped in writing order.
+	const stack: ({ readonly text: string } | { readonly value: JsonInput })[] = [{ value }];
+	while (stack.length > 0) {
+		const entry = stack.pop() as { readonly text: string } | { readonly value: JsonInput };
+		if ("text" in entry) {
+			out.push(entry.text);
+			continue;
+		}
+		const item = entry.value;
+		if (Array.isArray(item)) {
+			const list = item as readonly JsonInput[];
+			out.push("[");
+			stack.push({ text: "]" });
+			for (let i = list.length - 1; i >= 0; i--) {
+				stack.push({ value: list[i] as JsonInput });
+				if (i > 0) stack.push({ text: "," });
+			}
+		} else if (item !== null && typeof item === "object") {
+			const record = item as { readonly [name: string]: JsonInput };
+			const names = Object.keys(record).sort(compareByCodePoint);
+			out.push("{");
+			stack.push({ text: "}" });
+			for (let i = names.length - 1; i >= 0; i--) {
+				const name = names[i] as string;
+				stack.push({ value: record[name] as JsonInput });
+				stack.push({ text: `${i > 0 ? "," : ""}${JSON.stringify(name)}:` });
+			}
+		} else out.push(JSON.stringify(item));
 	}
-	return JSON.stringify(value);
+	return out.join("");
 }
 
 /** True when two JSON values are equal as JSON: numbers by value, objects whatever their property order (SD2). */
