@@ -34,6 +34,7 @@ The trait column names any trait a system takes on by using the capability.
 | Capability | Relation | Requires | What a consumer can depend on | Trait |
 |---|---|---|---|---|
 | `declared-shape-validation` | provides | none | A value is judged against a shape declared as data; a misfit is explained with where it lies, what the shape expected there, and what would make the value fit, and the same value and shape always get the same verdict and reason. The part that asked owns any refusal. | none |
+| `plain-json-value` | provides | none | An arbitrary value is read once, without the call stack, into a deeply frozen plain JSON value - reading only own enumerable data properties through their descriptors when reading what application code handed back (zorg's `D54`), or reading each object once when snapshotting a caller's input (zorg's `EM12`), with depth, UTF-8 byte-length and safe-integer measures and any native promise met given a do-nothing handler - or refused as not plain JSON; and any plain JSON value is written in canonical form (`SD4`). | none |
 
 shape-check holds nothing between judgements, coordinates no actors and contains no model, so it brings no trait.
 
@@ -156,12 +157,18 @@ A refused shape makes opening fail with the case's problems; a misfit is refused
 Neither component limits an input or a body to objects, and every case crosses AGP whole (SD6), so every case reaches the judgement and its records come back; each component compares the records it returns with the case's, in canonical JSON, byte for byte.\
 Tested by: `E9`, in `operation-call/test/contract/declared-shape-validation.test.js` and `entity-store/test/contract/declared-shape-validation.test.js`.
 
+**SD8 - Plain JSON values, snapshots, measures and canonical form (`D54`, `D55`).**\
+`readPlainJson(value)` reads a value application code handed back into a deeply frozen plain JSON value without running any of its code: it accepts `null`, booleans, finite numbers (`-0` normalised to `0`), strings, plain arrays (`Array.prototype`, `length` read from its own data descriptor, elements `0` to `length - 1` all own enumerable data properties with no holes, no extra own properties and no symbol keys) and plain objects (`Object.prototype` or `null` prototype, own enumerable string data properties only, no symbol keys, no non-enumerable properties, no getters or setters, `__proto__` and `then` defined as ordinary own data properties); any other value, a cycle on the active path, or a throw from a `Proxy` trap is refused (`{ok: false}`), while shared aliases on distinct paths are copied once without the call stack; every value obtained from a descriptor, and any value passed to `observePromises(value, maxNodes)`, that is a native `Promise` (`instanceof Promise`) has `Promise.prototype.then.call(v, noop, noop)` called inside a `try`/`catch` guard so no rejection goes unhandled and a throwing `constructor` or `Symbol.species` getter is caught.\
+`snapshotJson(value)` snapshots a caller's input (`EM12`) without the call stack, reading each object once by ordinary property access, memoising shared aliases, normalising `-0` to `0`, and refusing cycles, array holes, non-finite numbers and non-JSON types (`{ok: true, value}` deeply frozen, or `{ok: false}`).\
+`toCanonicalJson(value)` writes any plain JSON value in `SD4`'s canonical form without the call stack; `utf8ByteLength(text)`, `nestingDepth(value)` and `firstUnsafeInteger(value)` measure UTF-8 bytes, nesting depth and the first integer outside `[-9007199254740991, 9007199254740991]` in `SD5` pointer order.\
+Tested by: `test/contract/plain-json-value.test.js`, covering descriptor-only reading, getters never called, `then` data properties vs native promises (including a throwing `constructor` getter), `Proxy` trap throws, `__proto__`, shared aliases, deep nesting beyond the call stack, cycles, sparse arrays, symbols, non-enumerable properties, `snapshotJson`, `toCanonicalJson`, `utf8ByteLength`, `nestingDepth` and `firstUnsafeInteger`.
+
 ---
 
 ## Reference
 
 This repository, `apnex/shape-check`, private until its first working code is certified.\
-The package `@apnex/shape-check` exports `judgeShapeValue`, `prepareShapeDocument` and `SHAPE_DIALECT_ID`, as `export-map.json` records, and `@apnex/shape-check/corpus` holds the corpus of SD6, written from this contract by an agent other than the one that built the implementation.\
+The package `@apnex/shape-check` exports `judgeShapeValue`, `prepareShapeDocument`, `SHAPE_DIALECT_ID`, `readPlainJson`, `observePromises`, `snapshotJson`, `toCanonicalJson`, `utf8ByteLength`, `nestingDepth`, `firstUnsafeInteger` and `SAFE_INTEGER_LIMIT`, as `export-map.json` records, and `@apnex/shape-check/corpus` holds the corpus of SD6, written from this contract by an agent other than the one that built the implementation.\
 The implementation imports no module particular to one runtime.
 
 ---
@@ -207,4 +214,4 @@ Internal and sovereign, so a fit gap has somewhere to go.
 **Consumes, through a declared contract:** nothing.
 
 **Composed-by:** nothing yet.\
-Its capability is carried by operation-call and entity-store.
+Its capabilities are carried or consumed by operation-call, entity-store, entity-api and operation-command.

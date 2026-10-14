@@ -1,6 +1,6 @@
 # shape-check - Vision
 
-**Status: ratified by the director, 2026-10-09 (zorg's `docs/DECISIONS.md`, `D5`); enduring.**\
+**Status: ratified by the director, 2026-10-09 (zorg's `docs/DECISIONS.md`, `D5`), amended 2026-10-14 (`D55`); enduring.**\
 This document states why shape-check exists and what it will never be.\
 It carries no current state, no roadmap, and no schedule.
 
@@ -42,6 +42,7 @@ shape-check judges shapes once, for every part that needs it, and explains every
 
 An embeddable library that takes a shape and a value and returns a verdict: the value fits, or it does not and here is why.\
 Shapes are supplied by whoever asks; shape-check keeps none of its own.\
+It also reads any value handed across a boundary into the plain JSON value every judgement starts from, running none of its code, measures its depth and integers, and writes any plain JSON value in the canonical form its verdicts use (zorg's `D54`, `D55`).\
 It judges the values a system exchanges and keeps, never a transport's own envelope, which the transport checks for itself.
 
 It is embedded by components and applications that own their own process and their own shapes.
