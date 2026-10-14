@@ -2,7 +2,7 @@
 
 Judge whether a value fits a shape declared as data.
 
-**Status: built, awaiting certification of zorg's Delta 1, stage 1.**\
+**Status: built, and certified at zorg's Delta 1, stage 1 (`2bae723`) and amendment 7 (`c3080b1`).**\
 Its contract test runs every case of a corpus written from the contract alone by another agent.
 
 - `VISION.md` - why it exists, and what it will never be.
