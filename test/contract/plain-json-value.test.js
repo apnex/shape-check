@@ -242,6 +242,49 @@ test("readPlainJson observes a descriptor's promise handed back on the first rea
 	assert.equal(unhandled, 0);
 });
 
+test("readPlainJson observes a nested promise in a descriptor value handed back on the first read only (nested-first)", async () => {
+	const reads = { count: 0 };
+	const unhandled = await unhandledDuring(async () => {
+		for (const nested of [true, false]) {
+			reads.count = 0;
+			const value = new Proxy({ ending: "not-delivered", agpCode: "NO_ROUTE", bad: 1 }, {
+				getOwnPropertyDescriptor(target, key) {
+					const descriptor = Reflect.getOwnPropertyDescriptor(target, key);
+					if (key === "agpCode" && reads.count++ === 0) return { ...descriptor, value: { held: Promise.reject(new Error("first-read nested")) } };
+					if (key === "bad") return { ...descriptor, enumerable: false };
+					return descriptor;
+				},
+			});
+			assert.deepEqual(readPlainJson(nested ? { outer: [value] } : value), { ok: false });
+			assert.ok(reads.count >= 1);
+		}
+	});
+	assert.equal(unhandled, 0);
+});
+
+test("readPlainJson refuses a value whose one-time getPrototypeOf trap throws an object holding a promise (caught-object)", async () => {
+	const unhandled = await unhandledDuring(async () => {
+		let runs = 0;
+		const once = new Proxy({}, {
+			getPrototypeOf() {
+				if (runs++ === 0) throw { held: Promise.reject(new Error("caught exception payload")) };
+				return Object.prototype;
+			},
+		});
+		assert.deepEqual(readPlainJson({ ending: "not-delivered", agpCode: once }), { ok: false });
+		assert.equal(runs >= 1, true);
+		let topRuns = 0;
+		const top = new Proxy({ a: 1 }, {
+			getPrototypeOf() {
+				if (topRuns++ === 0) throw { held: [Promise.reject(new Error("top-level caught payload"))] };
+				return Object.prototype;
+			},
+		});
+		assert.deepEqual(readPlainJson(top), { ok: false });
+	});
+	assert.equal(unhandled, 0);
+});
+
 test("readPlainJson observes a rejected promise a Proxy trap throws", async () => {
 	const unhandled = await unhandledDuring(async () => {
 		for (const trap of ["getOwnPropertyDescriptor", "ownKeys", "getPrototypeOf"]) {
