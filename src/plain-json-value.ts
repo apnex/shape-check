@@ -107,10 +107,55 @@ function enumerableData(descriptor: PropertyDescriptor | undefined): descriptor 
 	return descriptor !== undefined && Object.hasOwn(descriptor, "value") && descriptor.enumerable === true;
 }
 
+/** How many values thrown while checking or attaching to one value met are themselves met, at most. */
+const THROWN_LIMIT = 1000;
+
+/**
+ * Gives `first`, if it is a native promise, a handler that does nothing, inside a guard. A value thrown while
+ * checking it or attaching the handler - by a Proxy's `getPrototypeOf` trap, say - is met the same way, up to
+ * `limit` such values, without the call stack. `found` is called with each object met, first `first`; when it
+ * returns false that object is not checked. Never throws.
+ */
+function consume(first: unknown, limit: number, found?: (item: object) => boolean): void {
+	const queue: unknown[] = [first];
+	let thrown = 0;
+	const caught = (err: unknown): void => {
+		if (thrown++ < limit) queue.push(err);
+	};
+	while (queue.length > 0) {
+		const item = queue.pop();
+		if (item === null || typeof item !== "object") continue;
+		if (found !== undefined && !found(item)) continue;
+		let promise = false;
+		try {
+			promise = item instanceof Promise;
+		} catch (err) {
+			caught(err);
+		}
+		if (!promise) continue;
+		try {
+			Promise.prototype.then.call(item, noop, noop);
+		} catch (err) {
+			// A throwing `constructor` or `Symbol.species` getter: caught, and met; the value is malformed.
+			caught(err);
+		}
+	}
+}
+
+/**
+ * Reads an own property descriptor, and observes its value at once if it has one (zorg's D54): a Proxy can
+ * hand back a promise on its first read only, so the value obtained is observed, not one read again later.
+ */
+function readDescriptor(item: object, name: string): PropertyDescriptor | undefined {
+	const descriptor = Object.getOwnPropertyDescriptor(item, name);
+	if (descriptor !== undefined && Object.hasOwn(descriptor, "value")) consume(descriptor.value, THROWN_LIMIT);
+	return descriptor;
+}
+
 /**
  * The members of a plain array or plain object, read through their own data descriptors only, or undefined
  * when the container is anything else. Never invokes a getter, setter or conversion; a Proxy's trap may run
- * and throw, which the caller catches.
+ * and throw, which the caller catches. Every descriptor value obtained is observed as it is obtained.
  */
 function readDescriptors(item: object): Members {
 	if (Object.getOwnPropertySymbols(item).length > 0) return undefined;
@@ -118,7 +163,7 @@ function readDescriptors(item: object): Members {
 	const names = Object.getOwnPropertyNames(item);
 	if (Array.isArray(item)) {
 		if (proto !== Array.prototype) return undefined;
-		const lengthDescriptor = Object.getOwnPropertyDescriptor(item, "length");
+		const lengthDescriptor = readDescriptor(item, "length");
 		if (lengthDescriptor === undefined || !Object.hasOwn(lengthDescriptor, "value")) return undefined;
 		const length: unknown = lengthDescriptor.value;
 		if (typeof length !== "number" || !Number.isInteger(length) || length < 0) return undefined;
@@ -128,7 +173,7 @@ function readDescriptors(item: object): Members {
 		const values: unknown[] = [];
 		for (let i = 0; i < length; i++) {
 			const key = String(i);
-			const descriptor = Object.getOwnPropertyDescriptor(item, key);
+			const descriptor = readDescriptor(item, key);
 			if (!enumerableData(descriptor)) return undefined;
 			keys.push(key);
 			values.push(descriptor.value);
@@ -138,7 +183,7 @@ function readDescriptors(item: object): Members {
 	if (proto !== Object.prototype && proto !== null) return undefined;
 	const values: unknown[] = [];
 	for (const name of names) {
-		const descriptor = Object.getOwnPropertyDescriptor(item, name);
+		const descriptor = readDescriptor(item, name);
 		if (!enumerableData(descriptor)) return undefined;
 		values.push(descriptor.value);
 	}
@@ -149,33 +194,22 @@ function readDescriptors(item: object): Members {
  * Gives every native promise met a handler that does nothing, so its rejection is consumed: `value` itself,
  * and every value read from an own data descriptor of the first `maxNodes` objects and arrays the walk visits
  * by identity, without the call stack. Never invokes a getter, setter or conversion; any throw - from a
- * Proxy's trap, or from attaching the handler - is caught.
+ * Proxy's trap, or from attaching the handler - is caught, and the value thrown is met in turn, so a trap
+ * that throws a rejected promise has that promise observed.
  */
 export function observePromises(value: unknown, maxNodes = 1000): void {
 	const observed = new Set<object>();
 	const visited = new Set<object>();
-	const pending: unknown[] = [];
-	/** Observes one value met, if it is a native promise, and queues it to be walked. */
-	const meet = (item: unknown): void => {
-		if (item === null || typeof item !== "object") return;
-		if (!observed.has(item)) {
-			observed.add(item);
-			let promise = false;
-			try {
-				promise = item instanceof Promise;
-			} catch {
-				promise = false;
-			}
-			if (promise) {
-				try {
-					Promise.prototype.then.call(item, noop, noop);
-				} catch {
-					// A throwing `constructor` or `Symbol.species` getter: caught; the value is malformed.
-				}
-			}
-		}
+	const pending: object[] = [];
+	/** Each object met for the first time is checked and queued to be walked. */
+	const found = (item: object): boolean => {
+		if (observed.has(item)) return false;
+		observed.add(item);
 		pending.push(item);
+		return true;
 	};
+	/** Observes one value met, and anything thrown while observing it, queuing each object to be walked. */
+	const meet = (item: unknown): void => consume(item, maxNodes, found);
 	meet(value);
 	while (pending.length > 0 && visited.size < maxNodes) {
 		const item = pending.pop() as object;
@@ -184,14 +218,16 @@ export function observePromises(value: unknown, maxNodes = 1000): void {
 		let names: string[];
 		try {
 			names = Object.getOwnPropertyNames(item);
-		} catch {
+		} catch (err) {
+			meet(err);
 			continue;
 		}
 		for (const name of names) {
 			let descriptor: PropertyDescriptor | undefined;
 			try {
 				descriptor = Object.getOwnPropertyDescriptor(item, name);
-			} catch {
+			} catch (err) {
+				meet(err);
 				continue;
 			}
 			if (descriptor !== undefined && Object.hasOwn(descriptor, "value")) meet(descriptor.value);
@@ -204,13 +240,16 @@ export function observePromises(value: unknown, maxNodes = 1000): void {
  * `{ok: true, value}` with a fresh deeply frozen plain JSON value, or `{ok: false}` after its native promises
  * are observed. Plain data is null, booleans, finite numbers (`-0` read as `0`), strings, plain arrays and
  * plain objects of them, read through own enumerable data descriptors only; a cycle, anything else, or a
- * throw from a Proxy's trap is refused. A container reached on more than one path is copied once.
+ * throw from a Proxy's trap is refused. A container reached on more than one path is copied once. Each
+ * descriptor value is observed as it is obtained, and a value a trap throws is observed when caught.
  */
 export function readPlainJson(value: unknown): PlainJsonReading {
 	let reading: PlainJsonReading;
 	try {
 		reading = copyPlain(value, readDescriptors);
-	} catch {
+	} catch (err) {
+		// A Proxy's trap threw: what it threw is observed too, in case it is a rejected promise.
+		observePromises(err);
 		reading = REFUSED;
 	}
 	if (!reading.ok) observePromises(value);

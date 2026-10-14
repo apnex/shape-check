@@ -206,6 +206,66 @@ test("readPlainJson catches a Proxy trap's throw and refuses; a Proxy of plain d
 	assert.equal(unhandled, 0);
 });
 
+/** A Proxy over `target` whose descriptor for `name` holds a rejected promise on its first read only. */
+function firstReadPromise(target, name, reads = { count: 0 }) {
+	return new Proxy(target, {
+		getOwnPropertyDescriptor(inner, key) {
+			const descriptor = Reflect.getOwnPropertyDescriptor(inner, key);
+			if (key === name && ++reads.count === 1) return { ...descriptor, value: Promise.reject(new Error(`first read of ${name}`)) };
+			return descriptor;
+		},
+	});
+}
+
+/** A Proxy over `target` whose `trap` throws a fresh rejected promise each time it runs. */
+function throwsPromise(target, trap, runs = { count: 0 }) {
+	return new Proxy(target, {
+		[trap]() {
+			runs.count++;
+			throw Promise.reject(new Error(`${trap} threw a promise`));
+		},
+	});
+}
+
+test("readPlainJson observes a descriptor's promise handed back on the first read only, never relying on a second read", async () => {
+	const reads = { count: 0 };
+	const unhandled = await unhandledDuring(async () => {
+		assert.deepEqual(readPlainJson(firstReadPromise({ ending: "not-delivered", agpCode: "TIMEOUT" }, "agpCode", reads)), { ok: false });
+		assert.deepEqual(readPlainJson({ nested: firstReadPromise({ a: 1, b: 2 }, "b") }), { ok: false });
+		assert.deepEqual(readPlainJson(firstReadPromise(["x", "y"], "1")), { ok: false });
+		// A non-enumerable member refused at once still has its first-read promise observed.
+		const hidden = {};
+		Object.defineProperty(hidden, "h", { value: 1, enumerable: false, configurable: true });
+		assert.deepEqual(readPlainJson(firstReadPromise(hidden, "h")), { ok: false });
+	});
+	assert.ok(reads.count >= 1);
+	assert.equal(unhandled, 0);
+});
+
+test("readPlainJson observes a rejected promise a Proxy trap throws", async () => {
+	const unhandled = await unhandledDuring(async () => {
+		for (const trap of ["getOwnPropertyDescriptor", "ownKeys", "getPrototypeOf"]) {
+			const runs = { count: 0 };
+			assert.deepEqual(readPlainJson(throwsPromise({ a: 1 }, trap, runs)), { ok: false });
+			assert.deepEqual(readPlainJson({ nested: throwsPromise([1], trap, runs) }), { ok: false });
+			assert.ok(runs.count >= 2, `the ${trap} trap ran and threw`);
+		}
+	});
+	assert.equal(unhandled, 0);
+});
+
+test("observePromises observes a descriptor's first-read promise and a rejected promise a Proxy trap throws", async () => {
+	const unhandled = await unhandledDuring(async () => {
+		observePromises(firstReadPromise({ message: "m" }, "message"));
+		observePromises({ nested: [firstReadPromise({ a: 1 }, "a")] });
+		for (const trap of ["getOwnPropertyDescriptor", "ownKeys", "getPrototypeOf"]) {
+			observePromises(throwsPromise({ a: 1 }, trap));
+			observePromises({ nested: throwsPromise({ a: 1 }, trap) });
+		}
+	});
+	assert.equal(unhandled, 0);
+});
+
 test("readPlainJson copies a shared alias once on distinct paths and refuses a cycle on the active path", () => {
 	const shared = { s: [1] };
 	const reading = readPlainJson({ a: shared, b: shared, c: [shared, shared] });
