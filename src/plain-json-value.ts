@@ -311,18 +311,16 @@ export function utf8ByteLength(text: string): number {
 	return n;
 }
 
-/** Levels of nesting: 0 for a scalar or an empty array or object, and 1 more than the deepest member otherwise. */
+/** Levels of nesting: 0 for a scalar, and 1 more than the deepest member for an array or object (SD8). */
 export function nestingDepth(value: JsonInput): number {
 	let deepest = 0;
-	// Each entry is a value and the depth it has if it is a non-empty array or object.
+	// Each entry is a value and the depth it has if it is an array or object, the value itself at 1.
 	const stack: { readonly value: JsonInput; readonly level: number }[] = [{ value, level: 1 }];
 	while (stack.length > 0) {
 		const { value: item, level } = stack.pop() as { readonly value: JsonInput; readonly level: number };
 		if (item === null || typeof item !== "object") continue;
-		const members = Object.values(item) as JsonInput[];
-		if (members.length === 0) continue;
 		if (level > deepest) deepest = level;
-		for (const member of members) stack.push({ value: member, level: level + 1 });
+		for (const member of Object.values(item) as JsonInput[]) stack.push({ value: member, level: level + 1 });
 	}
 	return deepest;
 }

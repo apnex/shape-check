@@ -458,14 +458,14 @@ test("utf8ByteLength counts UTF-8 bytes, a lone surrogate as three", () => {
 	assert.equal(utf8ByteLength(mixed), new TextEncoder().encode(mixed).length);
 });
 
-test("nestingDepth is 0 for scalars and empty containers and 1 more than the deepest member otherwise", () => {
-	for (const value of [null, 1, "s", true, [], {}]) assert.equal(nestingDepth(value), 0);
-	assert.equal(nestingDepth([1]), 1);
-	assert.equal(nestingDepth({ a: [] }), 1);
-	assert.equal(nestingDepth({ a: [[]] }), 2);
+test("nestingDepth is 0 for scalars and 1 more than the deepest member for an array or object, empty containers included", () => {
+	for (const value of [null, 1, "s", true]) assert.equal(nestingDepth(value), 0);
+	for (const value of [[], {}, [1]]) assert.equal(nestingDepth(value), 1);
+	assert.equal(nestingDepth({ a: [] }), 2);
+	assert.equal(nestingDepth({ a: [[]] }), 3);
 	assert.equal(nestingDepth([[1], [[2]], {}]), 3);
 	assert.equal(nestingDepth(nestedObjects(DEEP)), DEEP);
-	assert.equal(nestingDepth(nestedArrays(DEEP, [])), DEEP);
+	assert.equal(nestingDepth(nestedArrays(DEEP, [])), DEEP + 1);
 });
 
 test("firstUnsafeInteger names the first unsafe integer in SD5 order, or null", () => {
