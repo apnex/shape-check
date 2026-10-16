@@ -215,4 +215,4 @@ Internal and sovereign, so a fit gap has somewhere to go.
 **Consumes, through a declared contract:** nothing.
 
 **Composed-by:** nothing yet.\
-Its capabilities are carried or consumed by operation-call, entity-store, entity-api and operation-command.
+Its capabilities are carried or consumed by operation-call, entity-store, entity-api, caller-identity, operation-proxy and operation-command.
