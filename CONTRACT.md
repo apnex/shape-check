@@ -1,8 +1,8 @@
 ---
-id: unminted
+id: C3
 category: component
 title: shape-check - judge a value against a shape declared as data
-status: draft
+status: active
 hydrate-when: Two or more parts of a system check data against shapes declared as data, and each is about to write its own checker
 sovereignty: internal
 supersedes: []
@@ -12,8 +12,8 @@ related: [C0, A3]
 # shape-check
 
 The contract of record for shape-check, admitted to zorg's component set by the director's ruling `D2` in zorg's `docs/DECISIONS.md`.\
-It also carries the fields of a mission-kit registry entry, and that entry is generated from this file when the component is filed, never written as a second copy.\
-The registry id is unminted on purpose; one is minted only when the entry is admitted to the registry.
+It also carries the fields of a mission-kit registry entry, and that entry is generated from this file, never written as a second copy.\
+Admitted to mission-kit's component registry as `C3`, its first release `0.1.0` (`docs/DECISIONS.md` `D3`); its frontmatter is the entry's.
 
 ---
 
@@ -168,7 +168,7 @@ Tested by: `test/contract/plain-json-value.test.js`, covering descriptor-only re
 
 ## Reference
 
-This repository, `apnex/shape-check`, private until its first working code is certified.\
+This repository, `apnex/shape-check`, and its package `@apnex/shape-check`, released only by its own CI as a tarball attached to a GitHub release, drafted, verified and then published (`.github/workflows/release.yml`).\
 The package `@apnex/shape-check` exports `judgeShapeValue`, `prepareShapeDocument`, `SHAPE_DIALECT_ID`, `readPlainJson`, `observePromises`, `snapshotJson`, `toCanonicalJson`, `utf8ByteLength`, `nestingDepth`, `firstUnsafeInteger` and `SAFE_INTEGER_LIMIT`, as `export-map.json` records, and `@apnex/shape-check/corpus` holds the corpus of SD6, written from this contract by an agent other than the one that built the implementation.\
 The implementation imports no module particular to one runtime.
 

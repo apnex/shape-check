@@ -9,4 +9,4 @@ Its contract test runs every case of a corpus written from the contract alone by
 - `CONTRACT.md` - what a consumer can depend on, one capability per row.
 - `docs/DECISIONS.md` - the rulings about this component.
 
-It belongs to a component set first composed by zorg (`apnex/zorg`), and is private until its first working code.
+It belongs to a component set first composed by zorg (`apnex/zorg`), and is released only by its own CI, as a tarball attached to a GitHub release with its SHA-512 beside it, which a consumer names in its `package.json`: `https://github.com/apnex/shape-check/releases/download/v0.1.0/apnex-shape-check-0.1.0.tgz` for `0.1.0`.

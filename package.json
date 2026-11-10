@@ -1,6 +1,6 @@
 {
   "name": "@apnex/shape-check",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "private": true,
   "description": "Judge whether a value fits a shape declared as data.",
   "license": "MIT",
@@ -11,7 +11,7 @@
   },
   "type": "module",
   "engines": {
-    "node": ">=24"
+    "node": ">=22"
   },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
