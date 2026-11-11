@@ -1,0 +1,12 @@
+{
+  "description": "Numeric bounds ignore a string, even one spelling a number outside them.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "minimum": 10,
+    "maximum": 0
+  },
+  "value": "5",
+  "verdict": {
+    "verdict": "fits"
+  }
+}

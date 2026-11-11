@@ -1,0 +1,19 @@
+{
+  "description": "A minimum below 1e-6 is written in the fit sentence with the exponent canonical JSON uses, not in plain decimal.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "minimum": 1.5e-7
+  },
+  "value": 0,
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "minimum",
+        "expected": 1.5e-7,
+        "fit": "a number at least 1.5e-7"
+      }
+    ]
+  }
+}

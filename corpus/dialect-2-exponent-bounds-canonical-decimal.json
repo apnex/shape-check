@@ -1,0 +1,35 @@
+{
+  "description": "Bounds spelled with exponents are written in the fit sentences as canonical JSON writes them, 100 and 0.0025.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "properties": {
+      "a": {
+        "maximum": 1E2
+      },
+      "b": {
+        "maximum": 2.5E-3
+      }
+    }
+  },
+  "value": {
+    "a": 101,
+    "b": 0.003
+  },
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "/a",
+        "keyword": "maximum",
+        "expected": 100,
+        "fit": "a number at most 100"
+      },
+      {
+        "pointer": "/b",
+        "keyword": "maximum",
+        "expected": 0.0025,
+        "fit": "a number at most 0.0025"
+      }
+    ]
+  }
+}

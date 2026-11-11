@@ -1,0 +1,53 @@
+{
+  "description": "Every failing keyword at one number is reported in code-point order, the bounds between enum and type.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "type": "integer",
+    "minimum": 3,
+    "maximum": 2,
+    "enum": [
+      1,
+      2
+    ],
+    "const": 1
+  },
+  "value": 2.5,
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "const",
+        "expected": 1,
+        "fit": "exactly 1"
+      },
+      {
+        "pointer": "",
+        "keyword": "enum",
+        "expected": [
+          1,
+          2
+        ],
+        "fit": "one of 1, 2"
+      },
+      {
+        "pointer": "",
+        "keyword": "maximum",
+        "expected": 2,
+        "fit": "a number at most 2"
+      },
+      {
+        "pointer": "",
+        "keyword": "minimum",
+        "expected": 3,
+        "fit": "a number at least 3"
+      },
+      {
+        "pointer": "",
+        "keyword": "type",
+        "expected": "integer",
+        "fit": "a value of type integer"
+      }
+    ]
+  }
+}

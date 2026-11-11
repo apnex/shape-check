@@ -1,0 +1,19 @@
+{
+  "description": "Negative zero is below a minimum of 0.5 and misfits as 0 would.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "minimum": 0.5
+  },
+  "value": -0,
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "minimum",
+        "expected": 0.5,
+        "fit": "a number at least 0.5"
+      }
+    ]
+  }
+}

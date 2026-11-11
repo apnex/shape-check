@@ -1,0 +1,21 @@
+{
+  "description": "A dialect 1 document placed in a dialect 2 document, its marker removed, is a subschema judged beside dialect 2 keywords.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "properties": {
+      "count": {
+        "minimum": 0
+      },
+      "body": {
+        "type": "string"
+      }
+    }
+  },
+  "value": {
+    "count": 0,
+    "body": "entry"
+  },
+  "verdict": {
+    "verdict": "fits"
+  }
+}

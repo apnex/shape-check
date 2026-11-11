@@ -1,0 +1,11 @@
+{
+  "description": "A number equal to the maximum is at most it and fits.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "maximum": 5
+  },
+  "value": 5,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

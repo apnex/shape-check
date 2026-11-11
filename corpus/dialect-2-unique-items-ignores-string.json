@@ -1,0 +1,11 @@
+{
+  "description": "uniqueItems ignores a string with repeated characters.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "uniqueItems": true
+  },
+  "value": "aa",
+  "verdict": {
+    "verdict": "fits"
+  }
+}

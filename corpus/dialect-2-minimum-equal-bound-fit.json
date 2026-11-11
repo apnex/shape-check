@@ -1,0 +1,11 @@
+{
+  "description": "A number equal to the minimum is at least it and fits.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "minimum": 5
+  },
+  "value": 5,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

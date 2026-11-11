@@ -1,0 +1,25 @@
+{
+  "description": "In a dialect 1 document, property names and required names spelling dialect 2 keywords are names, not keywords, and are allowed.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "required": [
+      "maximum"
+    ],
+    "properties": {
+      "minimum": {
+        "type": "number"
+      },
+      "uniqueItems": {
+        "type": "boolean"
+      }
+    }
+  },
+  "value": {
+    "minimum": 1,
+    "uniqueItems": true,
+    "maximum": null
+  },
+  "verdict": {
+    "verdict": "fits"
+  }
+}

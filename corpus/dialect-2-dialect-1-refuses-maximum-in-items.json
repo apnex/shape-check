@@ -1,0 +1,22 @@
+{
+  "description": "A dialect 1 document carrying maximum in its items subschema is refused with unknown-keyword at that subschema.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "items": {
+      "maximum": 9
+    }
+  },
+  "value": [
+    1
+  ],
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "/items",
+        "keyword": "maximum",
+        "problem": "unknown-keyword"
+      }
+    ]
+  }
+}

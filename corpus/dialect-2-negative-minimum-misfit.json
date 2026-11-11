@@ -1,0 +1,19 @@
+{
+  "description": "A number below a negative minimum misfits, the bound written with its sign.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "minimum": -10
+  },
+  "value": -11,
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "minimum",
+        "expected": -10,
+        "fit": "a number at least -10"
+      }
+    ]
+  }
+}

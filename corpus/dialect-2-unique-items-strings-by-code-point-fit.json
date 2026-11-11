@@ -1,0 +1,16 @@
+{
+  "description": "Strings are compared code point for code point without normalisation, so a precomposed and a decomposed e-acute differ, as do letters of different case.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "uniqueItems": true
+  },
+  "value": [
+    "\u00e9",
+    "e\u0301",
+    "a",
+    "A"
+  ],
+  "verdict": {
+    "verdict": "fits"
+  }
+}

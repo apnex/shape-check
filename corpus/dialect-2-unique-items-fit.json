@@ -1,0 +1,22 @@
+{
+  "description": "An array whose items all differ fits uniqueItems true, values of different types never being equal.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "uniqueItems": true
+  },
+  "value": [
+    1,
+    "1",
+    true,
+    null,
+    [
+      1
+    ],
+    {
+      "a": 1
+    }
+  ],
+  "verdict": {
+    "verdict": "fits"
+  }
+}

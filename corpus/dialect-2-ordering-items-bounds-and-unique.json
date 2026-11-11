@@ -1,0 +1,54 @@
+{
+  "description": "Array-level misfits come first in keyword order, then bound misfits at each index in index order.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "type": "array",
+    "maxItems": 3,
+    "uniqueItems": true,
+    "items": {
+      "minimum": 0,
+      "maximum": 9
+    }
+  },
+  "value": [
+    10,
+    -1,
+    10,
+    5
+  ],
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "maxItems",
+        "expected": 3,
+        "fit": "an array of length at most 3"
+      },
+      {
+        "pointer": "",
+        "keyword": "uniqueItems",
+        "expected": true,
+        "fit": "an array whose items are all different"
+      },
+      {
+        "pointer": "/0",
+        "keyword": "maximum",
+        "expected": 9,
+        "fit": "a number at most 9"
+      },
+      {
+        "pointer": "/1",
+        "keyword": "minimum",
+        "expected": 0,
+        "fit": "a number at least 0"
+      },
+      {
+        "pointer": "/2",
+        "keyword": "maximum",
+        "expected": 9,
+        "fit": "a number at most 9"
+      }
+    ]
+  }
+}

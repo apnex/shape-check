@@ -3,8 +3,8 @@
   "paths": {
     ".": {
       "exports": {
-        "judgeShapeValue": { "part": "shape-check", "serves": ["declared-shape-validation"] },
-        "prepareShapeDocument": { "part": "shape-check", "serves": ["declared-shape-validation"] },
+        "judgeShapeValue": { "part": "shape-check", "serves": ["declared-shape-validation", "bounded-shape-validation"] },
+        "prepareShapeDocument": { "part": "shape-check", "serves": ["declared-shape-validation", "bounded-shape-validation"] },
         "SHAPE_DIALECT_ID": { "part": "shape-check", "serves": ["declared-shape-validation"] },
         "readPlainJson": { "part": "shape-check", "serves": ["plain-json-value"] },
         "observePromises": { "part": "shape-check", "serves": ["plain-json-value"] },
@@ -17,10 +17,8 @@
       }
     },
     "./corpus": {
-      "data": { "part": "shape-check", "serves": ["declared-shape-validation"] }
+      "data": { "part": "shape-check", "serves": ["declared-shape-validation", "bounded-shape-validation"] }
     }
   },
-  "deferred": {
-    "bounded-shape-validation": "D4"
-  }
+  "deferred": {}
 }

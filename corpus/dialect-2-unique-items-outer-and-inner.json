@@ -1,0 +1,47 @@
+{
+  "description": "uniqueItems at the outer array and in its items subschema each misfit where their own array repeats.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "uniqueItems": true,
+    "items": {
+      "uniqueItems": true
+    }
+  },
+  "value": [
+    [
+      1,
+      1
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      1,
+      1.0
+    ]
+  ],
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "uniqueItems",
+        "expected": true,
+        "fit": "an array whose items are all different"
+      },
+      {
+        "pointer": "/0",
+        "keyword": "uniqueItems",
+        "expected": true,
+        "fit": "an array whose items are all different"
+      },
+      {
+        "pointer": "/2",
+        "keyword": "uniqueItems",
+        "expected": true,
+        "fit": "an array whose items are all different"
+      }
+    ]
+  }
+}

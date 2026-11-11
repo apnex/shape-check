@@ -1,0 +1,26 @@
+{
+  "description": "With the minimum above the maximum a number between them misfits both at one pointer, maximum before minimum by code point.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "minimum": 5,
+    "maximum": 3
+  },
+  "value": 4,
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "maximum",
+        "expected": 3,
+        "fit": "a number at most 3"
+      },
+      {
+        "pointer": "",
+        "keyword": "minimum",
+        "expected": 5,
+        "fit": "a number at least 5"
+      }
+    ]
+  }
+}

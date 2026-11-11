@@ -1,0 +1,19 @@
+{
+  "description": "A number below the minimum misfits at the number.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "minimum": 3
+  },
+  "value": 2,
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "minimum",
+        "expected": 3,
+        "fit": "a number at least 3"
+      }
+    ]
+  }
+}

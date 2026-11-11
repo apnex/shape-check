@@ -1,0 +1,59 @@
+{
+  "description": "Misfits from new and dialect 1 keywords across nested pointers sort by pointer token by token.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "properties": {
+      "tags": {
+        "type": "array",
+        "uniqueItems": true,
+        "items": {
+          "type": "string",
+          "minLength": 2
+        }
+      },
+      "score": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 100
+      }
+    }
+  },
+  "value": {
+    "tags": [
+      "ab",
+      "c",
+      "ab",
+      7
+    ],
+    "score": 100.5
+  },
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "/score",
+        "keyword": "maximum",
+        "expected": 100,
+        "fit": "a number at most 100"
+      },
+      {
+        "pointer": "/tags",
+        "keyword": "uniqueItems",
+        "expected": true,
+        "fit": "an array whose items are all different"
+      },
+      {
+        "pointer": "/tags/1",
+        "keyword": "minLength",
+        "expected": 2,
+        "fit": "a string of length at least 2"
+      },
+      {
+        "pointer": "/tags/3",
+        "keyword": "type",
+        "expected": "string",
+        "fit": "a value of type string"
+      }
+    ]
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "description": "Bound misfits at property names holding / and ~ carry escaped pointers.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "properties": {
+      "~": {
+        "maximum": -1
+      },
+      "a/b": {
+        "minimum": 1
+      }
+    }
+  },
+  "value": {
+    "~": 0,
+    "a/b": 0
+  },
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "/a~1b",
+        "keyword": "minimum",
+        "expected": 1,
+        "fit": "a number at least 1"
+      },
+      {
+        "pointer": "/~0",
+        "keyword": "maximum",
+        "expected": -1,
+        "fit": "a number at most -1"
+      }
+    ]
+  }
+}

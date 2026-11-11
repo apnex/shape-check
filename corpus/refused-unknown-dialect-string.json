@@ -1,7 +1,7 @@
 {
   "description": "An unknown marker yields one problem without examining other content.",
   "shape": {
-    "$schema": "urn:apnex:shape-check:dialect:2",
+    "$schema": "urn:apnex:shape-check:dialect:3",
     "type": "bad",
     "mystery": true,
     "items": {

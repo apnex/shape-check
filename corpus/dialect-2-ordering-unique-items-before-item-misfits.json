@@ -1,0 +1,38 @@
+{
+  "description": "A uniqueItems misfit at an array precedes the items misfits at its indices.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "type": "array",
+    "uniqueItems": true,
+    "items": {
+      "type": "string"
+    }
+  },
+  "value": [
+    1,
+    1
+  ],
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "uniqueItems",
+        "expected": true,
+        "fit": "an array whose items are all different"
+      },
+      {
+        "pointer": "/0",
+        "keyword": "type",
+        "expected": "string",
+        "fit": "a value of type string"
+      },
+      {
+        "pointer": "/1",
+        "keyword": "type",
+        "expected": "string",
+        "fit": "a value of type string"
+      }
+    ]
+  }
+}

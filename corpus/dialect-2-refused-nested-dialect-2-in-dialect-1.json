@@ -1,0 +1,26 @@
+{
+  "description": "A dialect 2 marker in a subschema of a dialect 1 document is nested-dialect and does not switch the subschema to dialect 2, so its uniqueItems is unknown-keyword.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "items": {
+      "$schema": "urn:apnex:shape-check:dialect:2",
+      "uniqueItems": true
+    }
+  },
+  "value": [],
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "/items",
+        "keyword": "$schema",
+        "problem": "nested-dialect"
+      },
+      {
+        "pointer": "/items",
+        "keyword": "uniqueItems",
+        "problem": "unknown-keyword"
+      }
+    ]
+  }
+}

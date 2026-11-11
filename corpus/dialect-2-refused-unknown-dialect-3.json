@@ -1,0 +1,19 @@
+{
+  "description": "A marker naming dialect 3 names neither dialect and yields one problem without examining other content.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:3",
+    "minimum": 0,
+    "uniqueItems": "x"
+  },
+  "value": 0,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "",
+        "keyword": "$schema",
+        "problem": "unknown-dialect"
+      }
+    ]
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "description": "A shape using new keywords without a marker yields only missing-dialect.",
+  "shape": {
+    "minimum": 0,
+    "uniqueItems": "x",
+    "type": "bad"
+  },
+  "value": 1,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "",
+        "keyword": "$schema",
+        "problem": "missing-dialect"
+      }
+    ]
+  }
+}

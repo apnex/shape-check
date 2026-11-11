@@ -1,0 +1,13 @@
+{
+  "description": "An integer spelled 10.0 fits an integer type and an inclusive maximum of 10.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "type": "integer",
+    "minimum": 0,
+    "maximum": 10
+  },
+  "value": 10.0,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

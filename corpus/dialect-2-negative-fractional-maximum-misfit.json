@@ -1,0 +1,19 @@
+{
+  "description": "A number nearer zero than a negative fractional maximum is above it and misfits.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "maximum": -0.5
+  },
+  "value": -0.25,
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "maximum",
+        "expected": -0.5,
+        "fit": "a number at most -0.5"
+      }
+    ]
+  }
+}

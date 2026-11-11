@@ -1,0 +1,11 @@
+{
+  "description": "An integer below a fractional maximum fits.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "maximum": 1.5
+  },
+  "value": 1,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

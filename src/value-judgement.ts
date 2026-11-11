@@ -1,5 +1,7 @@
 /**
- * Judging a value against a shape that has passed SD3, collecting every misfit (CONTRACT.md, SD2, SD4, SD5).
+ * Judging a value against a shape that has passed SD3, collecting every misfit (CONTRACT.md, SD2, SD4, SD5, and
+ * SD9's three keywords). A shape that has passed SD3 holds a keyword of dialect 2 only when it is a dialect 2
+ * document, so the judgement needs no dialect: the same shape marked either way is judged the same.
  */
 import { compareByCodePoint, jsonValuesEqual, toCanonicalJson } from "./canonical-json.js";
 import { compareJsonPaths, formatJsonPointer } from "./json-pointer-order.js";
@@ -28,6 +30,18 @@ function valueIsOfType(value: JsonValue, typeName: string): boolean {
 	}
 }
 
+/** True when no two items of an array are equal as JSON (SD2), compared by their canonical JSON (SD4). */
+function itemsAllDifferent(items: readonly JsonValue[]): boolean {
+	if (items.length < 2) return true;
+	const seen = new Set<string>();
+	for (const item of items) {
+		const text = toCanonicalJson(item);
+		if (seen.has(text)) return false;
+		seen.add(text);
+	}
+	return true;
+}
+
 /** Counts a string's length in Unicode code points, as dialect 1 does. */
 function codePointLength(text: string): number {
 	return Array.from(text).length;
@@ -49,6 +63,10 @@ function judgeAgainstSubschema(node: JsonObject, value: JsonValue, path: readonl
 		const expected = node.const as JsonValue;
 		if (!jsonValuesEqual(expected, value)) report("const", expected, `exactly ${toCanonicalJson(expected)}`);
 	}
+	if (typeof value === "number") {
+		if (typeof node.minimum === "number" && value < node.minimum) report("minimum", node.minimum, `a number at least ${toCanonicalJson(node.minimum)}`);
+		if (typeof node.maximum === "number" && value > node.maximum) report("maximum", node.maximum, `a number at most ${toCanonicalJson(node.maximum)}`);
+	}
 	if (typeof value === "string") {
 		const length = codePointLength(value);
 		if (typeof node.pattern === "string") {
@@ -63,6 +81,7 @@ function judgeAgainstSubschema(node: JsonObject, value: JsonValue, path: readonl
 	if (Array.isArray(value)) {
 		if (typeof node.minItems === "number" && value.length < node.minItems) report("minItems", node.minItems, `an array of length at least ${node.minItems}`);
 		if (typeof node.maxItems === "number" && value.length > node.maxItems) report("maxItems", node.maxItems, `an array of length at most ${node.maxItems}`);
+		if (node.uniqueItems === true && !itemsAllDifferent(value)) report("uniqueItems", true, "an array whose items are all different");
 		if (isJsonObject(node.items)) value.forEach((item, i) => judgeAgainstSubschema(node.items as JsonObject, item, [...path, i], patterns, found));
 	}
 	if (isJsonObject(value)) {

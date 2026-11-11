@@ -1,0 +1,25 @@
+{
+  "description": "A dialect 1 document carrying minimum in a properties subschema is refused with unknown-keyword at that subschema.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "properties": {
+      "n": {
+        "type": "number",
+        "minimum": 0
+      }
+    }
+  },
+  "value": {
+    "n": 1
+  },
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "/properties/n",
+        "keyword": "minimum",
+        "problem": "unknown-keyword"
+      }
+    ]
+  }
+}

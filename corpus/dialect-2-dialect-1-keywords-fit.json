@@ -1,0 +1,51 @@
+{
+  "description": "A dialect 2 shape using only dialect 1 keywords is judged as dialect 1 judges it: a fitting value fits, repeated items included.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "type": "object",
+    "required": [
+      "name"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "name": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8,
+        "pattern": "^[a-z]"
+      },
+      "tags": {
+        "type": "array",
+        "maxItems": 2,
+        "items": {
+          "enum": [
+            "x",
+            "y"
+          ]
+        }
+      },
+      "link": {
+        "format": "uri"
+      },
+      "kind": {
+        "const": {
+          "a": 1
+        }
+      }
+    }
+  },
+  "value": {
+    "name": "abc",
+    "tags": [
+      "x",
+      "x"
+    ],
+    "link": "https://example.com",
+    "kind": {
+      "a": 1.0
+    }
+  },
+  "verdict": {
+    "verdict": "fits"
+  }
+}

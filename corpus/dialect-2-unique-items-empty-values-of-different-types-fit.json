@@ -1,0 +1,18 @@
+{
+  "description": "Zero, false, null, the empty string, the empty array and the empty object are all different.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "uniqueItems": true
+  },
+  "value": [
+    0,
+    false,
+    null,
+    "",
+    [],
+    {}
+  ],
+  "verdict": {
+    "verdict": "fits"
+  }
+}

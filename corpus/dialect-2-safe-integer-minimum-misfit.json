@@ -1,0 +1,19 @@
+{
+  "description": "The largest safe integer as a minimum is written in full and misfits the integer just below it.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "minimum": 9007199254740991
+  },
+  "value": 9007199254740990,
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "minimum",
+        "expected": 9007199254740991,
+        "fit": "a number at least 9007199254740991"
+      }
+    ]
+  }
+}

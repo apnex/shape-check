@@ -1,0 +1,20 @@
+{
+  "description": "A uniqueItems that is an array holding a boolean is not a boolean and is refused as invalid-value.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "uniqueItems": [
+      true
+    ]
+  },
+  "value": null,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "",
+        "keyword": "uniqueItems",
+        "problem": "invalid-value"
+      }
+    ]
+  }
+}

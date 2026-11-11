@@ -1,0 +1,30 @@
+{
+  "description": "Dialect 2 adds only minimum, maximum and uniqueItems, so JSON Schema's exclusive bounds and multipleOf are still unknown-keyword.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "multipleOf": 2,
+    "exclusiveMinimum": 0,
+    "exclusiveMaximum": 10
+  },
+  "value": 4,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "",
+        "keyword": "exclusiveMaximum",
+        "problem": "unknown-keyword"
+      },
+      {
+        "pointer": "",
+        "keyword": "exclusiveMinimum",
+        "problem": "unknown-keyword"
+      },
+      {
+        "pointer": "",
+        "keyword": "multipleOf",
+        "problem": "unknown-keyword"
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "description": "An integer above a fractional minimum fits.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "minimum": 2.5
+  },
+  "value": 3,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

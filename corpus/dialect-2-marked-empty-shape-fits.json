@@ -1,0 +1,15 @@
+{
+  "description": "A dialect 2 shape with only its marker requires nothing, so even repeated items fit.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2"
+  },
+  "value": {
+    "a": [
+      1,
+      1
+    ]
+  },
+  "verdict": {
+    "verdict": "fits"
+  }
+}

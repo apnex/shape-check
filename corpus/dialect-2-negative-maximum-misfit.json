@@ -1,0 +1,19 @@
+{
+  "description": "Zero is above a negative maximum and misfits.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "maximum": -1
+  },
+  "value": 0,
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "maximum",
+        "expected": -1,
+        "fit": "a number at most -1"
+      }
+    ]
+  }
+}

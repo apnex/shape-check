@@ -1,0 +1,17 @@
+{
+  "description": "Bounds at the safe integer limits hold both limits.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "items": {
+      "minimum": -9007199254740991,
+      "maximum": 9007199254740991
+    }
+  },
+  "value": [
+    -9007199254740991,
+    9007199254740991
+  ],
+  "verdict": {
+    "verdict": "fits"
+  }
+}

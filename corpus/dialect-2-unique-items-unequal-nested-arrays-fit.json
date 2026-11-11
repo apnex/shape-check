@@ -1,0 +1,29 @@
+{
+  "description": "Nested arrays differing in item order or length are all different and fit uniqueItems true.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "uniqueItems": true
+  },
+  "value": [
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      1
+    ],
+    [
+      1,
+      2,
+      3
+    ],
+    [
+      1
+    ],
+    []
+  ],
+  "verdict": {
+    "verdict": "fits"
+  }
+}

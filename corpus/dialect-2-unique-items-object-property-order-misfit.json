@@ -1,0 +1,28 @@
+{
+  "description": "Two objects with the same properties in a different order are equal, so uniqueItems true misfits.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "uniqueItems": true
+  },
+  "value": [
+    {
+      "a": 1,
+      "b": 2
+    },
+    {
+      "b": 2,
+      "a": 1
+    }
+  ],
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "uniqueItems",
+        "expected": true,
+        "fit": "an array whose items are all different"
+      }
+    ]
+  }
+}
