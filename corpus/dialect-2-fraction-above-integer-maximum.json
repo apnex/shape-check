@@ -1,0 +1,19 @@
+{
+  "description": "A fractional value above an integer maximum misfits.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "maximum": 2
+  },
+  "value": 2.5,
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "maximum",
+        "expected": 2,
+        "fit": "a number at most 2"
+      }
+    ]
+  }
+}

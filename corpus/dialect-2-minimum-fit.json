@@ -1,0 +1,11 @@
+{
+  "description": "A number above the minimum fits.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "minimum": 3
+  },
+  "value": 7,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "description": "A number below the maximum fits.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "maximum": 10
+  },
+  "value": 4,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

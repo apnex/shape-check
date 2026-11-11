@@ -1,0 +1,14 @@
+{
+  "description": "uniqueItems ignores an object with repeated property values.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "uniqueItems": true
+  },
+  "value": {
+    "a": 1,
+    "b": 1
+  },
+  "verdict": {
+    "verdict": "fits"
+  }
+}

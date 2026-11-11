@@ -1,0 +1,22 @@
+{
+  "description": "Negative zero equals zero, so 0 and -0 repeat and uniqueItems true misfits.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "uniqueItems": true
+  },
+  "value": [
+    0,
+    -0
+  ],
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "uniqueItems",
+        "expected": true,
+        "fit": "an array whose items are all different"
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "description": "A fractional value between integer bounds fits.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "minimum": 1,
+    "maximum": 2
+  },
+  "value": 1.5,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

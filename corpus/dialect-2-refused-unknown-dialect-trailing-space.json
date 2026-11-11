@@ -1,0 +1,18 @@
+{
+  "description": "Dialect 2's identifier with a trailing space is not dialect 2's identifier and is refused as unknown-dialect.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2 ",
+    "minimum": 0
+  },
+  "value": 1,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "",
+        "keyword": "$schema",
+        "problem": "unknown-dialect"
+      }
+    ]
+  }
+}

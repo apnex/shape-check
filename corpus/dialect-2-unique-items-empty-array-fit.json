@@ -1,0 +1,11 @@
+{
+  "description": "An empty array has no two items and fits uniqueItems true.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "uniqueItems": true
+  },
+  "value": [],
+  "verdict": {
+    "verdict": "fits"
+  }
+}

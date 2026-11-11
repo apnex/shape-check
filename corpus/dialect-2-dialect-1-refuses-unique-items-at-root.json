@@ -1,0 +1,18 @@
+{
+  "description": "A dialect 1 document carrying uniqueItems at its root is still refused with unknown-keyword.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "uniqueItems": true
+  },
+  "value": [],
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "",
+        "keyword": "uniqueItems",
+        "problem": "unknown-keyword"
+      }
+    ]
+  }
+}

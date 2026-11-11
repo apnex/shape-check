@@ -1,0 +1,39 @@
+{
+  "description": "A value meeting the three new keywords alongside dialect 1 keywords fits.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "type": "object",
+    "required": [
+      "id",
+      "scores"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z]+$"
+      },
+      "scores": {
+        "type": "array",
+        "minItems": 1,
+        "uniqueItems": true,
+        "items": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        }
+      }
+    }
+  },
+  "value": {
+    "id": "abc",
+    "scores": [
+      0,
+      0.5,
+      1
+    ]
+  },
+  "verdict": {
+    "verdict": "fits"
+  }
+}

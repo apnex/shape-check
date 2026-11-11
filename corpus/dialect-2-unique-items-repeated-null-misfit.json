@@ -1,0 +1,24 @@
+{
+  "description": "A repeated null makes the items not all different.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "uniqueItems": true
+  },
+  "value": [
+    false,
+    null,
+    true,
+    null
+  ],
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "uniqueItems",
+        "expected": true,
+        "fit": "an array whose items are all different"
+      }
+    ]
+  }
+}

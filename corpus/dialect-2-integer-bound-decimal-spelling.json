@@ -1,0 +1,19 @@
+{
+  "description": "A maximum spelled 3.0 is written in the fit sentence as canonical JSON writes it, 3.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "maximum": 3.0
+  },
+  "value": 4,
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "maximum",
+        "expected": 3,
+        "fit": "a number at most 3"
+      }
+    ]
+  }
+}

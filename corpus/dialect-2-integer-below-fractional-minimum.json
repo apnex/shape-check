@@ -1,0 +1,19 @@
+{
+  "description": "An integer below a fractional minimum misfits, the bound written with its fraction.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "minimum": 2.5
+  },
+  "value": 2,
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "minimum",
+        "expected": 2.5,
+        "fit": "a number at least 2.5"
+      }
+    ]
+  }
+}

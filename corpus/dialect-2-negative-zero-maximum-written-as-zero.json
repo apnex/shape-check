@@ -1,0 +1,19 @@
+{
+  "description": "A maximum of negative zero is written in the fit sentence as canonical JSON writes it, 0.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "maximum": -0
+  },
+  "value": 0.5,
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "maximum",
+        "expected": 0,
+        "fit": "a number at most 0"
+      }
+    ]
+  }
+}

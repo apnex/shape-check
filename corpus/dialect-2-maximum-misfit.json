@@ -1,0 +1,19 @@
+{
+  "description": "A number above the maximum misfits at the number.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "maximum": 10
+  },
+  "value": 11,
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "maximum",
+        "expected": 10,
+        "fit": "a number at most 10"
+      }
+    ]
+  }
+}

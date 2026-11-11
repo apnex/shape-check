@@ -1,0 +1,19 @@
+{
+  "description": "A minimum of negative zero is written in the fit sentence as canonical JSON writes it, 0.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "minimum": -0
+  },
+  "value": -0.5,
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "minimum",
+        "expected": 0,
+        "fit": "a number at least 0"
+      }
+    ]
+  }
+}

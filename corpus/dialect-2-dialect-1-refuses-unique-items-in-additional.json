@@ -1,0 +1,20 @@
+{
+  "description": "A dialect 1 document carrying uniqueItems in its additionalProperties subschema is refused with unknown-keyword at that subschema.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "additionalProperties": {
+      "uniqueItems": true
+    }
+  },
+  "value": {},
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "/additionalProperties",
+        "keyword": "uniqueItems",
+        "problem": "unknown-keyword"
+      }
+    ]
+  }
+}

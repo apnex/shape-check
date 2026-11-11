@@ -1,0 +1,20 @@
+{
+  "description": "uniqueItems false requires nothing, so repeated items fit.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "uniqueItems": false
+  },
+  "value": [
+    1,
+    1,
+    {
+      "a": 1
+    },
+    {
+      "a": 1
+    }
+  ],
+  "verdict": {
+    "verdict": "fits"
+  }
+}

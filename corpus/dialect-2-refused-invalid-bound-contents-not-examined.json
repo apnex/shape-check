@@ -1,0 +1,22 @@
+{
+  "description": "A minimum holding an object is invalid-value, and nothing inside it is examined as a subschema.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "minimum": {
+      "$schema": "urn:apnex:shape-check:dialect:2",
+      "pattern": "[",
+      "zz": 1
+    }
+  },
+  "value": null,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "",
+        "keyword": "minimum",
+        "problem": "invalid-value"
+      }
+    ]
+  }
+}

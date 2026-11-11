@@ -1,0 +1,25 @@
+{
+  "description": "Several repeats in one array yield a single uniqueItems misfit at the array.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "uniqueItems": true
+  },
+  "value": [
+    1,
+    1,
+    2,
+    2,
+    1
+  ],
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "uniqueItems",
+        "expected": true,
+        "fit": "an array whose items are all different"
+      }
+    ]
+  }
+}

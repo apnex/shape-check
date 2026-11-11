@@ -1,0 +1,12 @@
+{
+  "description": "A value equal to both bounds by value fits however each is spelled, 2.0 being 2.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "minimum": 2,
+    "maximum": 2.0
+  },
+  "value": 2.0,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

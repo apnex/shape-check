@@ -1,0 +1,23 @@
+{
+  "description": "A dialect 2 marker in an items subschema of a dialect 2 document is refused as nested-dialect.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "items": {
+      "$schema": "urn:apnex:shape-check:dialect:2",
+      "minimum": 0
+    }
+  },
+  "value": [
+    1
+  ],
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "/items",
+        "keyword": "$schema",
+        "problem": "nested-dialect"
+      }
+    ]
+  }
+}

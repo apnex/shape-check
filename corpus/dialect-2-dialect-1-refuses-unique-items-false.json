@@ -1,0 +1,18 @@
+{
+  "description": "A dialect 1 document carrying uniqueItems false is refused too, although false would require nothing in dialect 2.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "uniqueItems": false
+  },
+  "value": [],
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "",
+        "keyword": "uniqueItems",
+        "problem": "unknown-keyword"
+      }
+    ]
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "description": "A dialect 1 document using all three dialect 2 keywords at several positions gets every unknown-keyword problem in pointer then keyword order.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "uniqueItems": true,
+    "minimum": 0,
+    "maximum": 1,
+    "items": {
+      "minimum": 0
+    },
+    "properties": {
+      "b": {
+        "uniqueItems": false
+      },
+      "a": {
+        "maximum": 1
+      }
+    }
+  },
+  "value": null,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "",
+        "keyword": "maximum",
+        "problem": "unknown-keyword"
+      },
+      {
+        "pointer": "",
+        "keyword": "minimum",
+        "problem": "unknown-keyword"
+      },
+      {
+        "pointer": "",
+        "keyword": "uniqueItems",
+        "problem": "unknown-keyword"
+      },
+      {
+        "pointer": "/items",
+        "keyword": "minimum",
+        "problem": "unknown-keyword"
+      },
+      {
+        "pointer": "/properties/a",
+        "keyword": "maximum",
+        "problem": "unknown-keyword"
+      },
+      {
+        "pointer": "/properties/b",
+        "keyword": "uniqueItems",
+        "problem": "unknown-keyword"
+      }
+    ]
+  }
+}

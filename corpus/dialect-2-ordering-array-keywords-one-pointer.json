@@ -1,0 +1,44 @@
+{
+  "description": "Every failing keyword at one array is reported in code-point order, uniqueItems after type.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "uniqueItems": true,
+    "type": "object",
+    "minItems": 5,
+    "maxItems": 2
+  },
+  "value": [
+    1,
+    1,
+    1
+  ],
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "maxItems",
+        "expected": 2,
+        "fit": "an array of length at most 2"
+      },
+      {
+        "pointer": "",
+        "keyword": "minItems",
+        "expected": 5,
+        "fit": "an array of length at least 5"
+      },
+      {
+        "pointer": "",
+        "keyword": "type",
+        "expected": "object",
+        "fit": "a value of type object"
+      },
+      {
+        "pointer": "",
+        "keyword": "uniqueItems",
+        "expected": true,
+        "fit": "an array whose items are all different"
+      }
+    ]
+  }
+}

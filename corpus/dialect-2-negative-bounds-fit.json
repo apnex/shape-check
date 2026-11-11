@@ -1,0 +1,12 @@
+{
+  "description": "A negative fractional number between negative bounds fits.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "minimum": -10,
+    "maximum": -1
+  },
+  "value": -5.5,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

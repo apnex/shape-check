@@ -1,0 +1,17 @@
+{
+  "description": "A const holding a dialect 2 marker and an ill-formed minimum is data, not a subschema, and is neither refused nor applied.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "const": {
+      "$schema": "urn:apnex:shape-check:dialect:2",
+      "minimum": "x"
+    }
+  },
+  "value": {
+    "minimum": "x",
+    "$schema": "urn:apnex:shape-check:dialect:2"
+  },
+  "verdict": {
+    "verdict": "fits"
+  }
+}

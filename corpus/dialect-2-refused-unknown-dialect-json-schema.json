@@ -1,0 +1,18 @@
+{
+  "description": "The JSON Schema 2020-12 meta-schema URI names neither dialect and is refused as unknown-dialect.",
+  "shape": {
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "uniqueItems": true
+  },
+  "value": [],
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "",
+        "keyword": "$schema",
+        "problem": "unknown-dialect"
+      }
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "description": "uniqueItems ignores a boolean.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "uniqueItems": true
+  },
+  "value": false,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

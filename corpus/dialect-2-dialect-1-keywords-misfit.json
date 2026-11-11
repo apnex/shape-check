@@ -1,0 +1,102 @@
+{
+  "description": "A dialect 2 shape using only dialect 1 keywords is judged as dialect 1 judges it: the same misfits, records and order.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "type": "object",
+    "required": [
+      "name"
+    ],
+    "additionalProperties": false,
+    "properties": {
+      "name": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 8,
+        "pattern": "^[a-z]"
+      },
+      "tags": {
+        "type": "array",
+        "maxItems": 2,
+        "items": {
+          "enum": [
+            "x",
+            "y"
+          ]
+        }
+      },
+      "link": {
+        "format": "uri"
+      },
+      "kind": {
+        "const": {
+          "a": 1
+        }
+      }
+    }
+  },
+  "value": {
+    "name": "",
+    "tags": [
+      "x",
+      "z",
+      "y"
+    ],
+    "link": "no scheme",
+    "kind": {
+      "a": 2
+    },
+    "extra": 0
+  },
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "/extra",
+        "keyword": "additionalProperties",
+        "expected": false,
+        "fit": "no property named \"extra\""
+      },
+      {
+        "pointer": "/kind",
+        "keyword": "const",
+        "expected": {
+          "a": 1
+        },
+        "fit": "exactly {\"a\":1}"
+      },
+      {
+        "pointer": "/link",
+        "keyword": "format",
+        "expected": "uri",
+        "fit": "an absolute URI, such as https://example.com/page"
+      },
+      {
+        "pointer": "/name",
+        "keyword": "minLength",
+        "expected": 1,
+        "fit": "a string of length at least 1"
+      },
+      {
+        "pointer": "/name",
+        "keyword": "pattern",
+        "expected": "^[a-z]",
+        "fit": "a string matching \"^[a-z]\""
+      },
+      {
+        "pointer": "/tags",
+        "keyword": "maxItems",
+        "expected": 2,
+        "fit": "an array of length at most 2"
+      },
+      {
+        "pointer": "/tags/1",
+        "keyword": "enum",
+        "expected": [
+          "x",
+          "y"
+        ],
+        "fit": "one of \"x\", \"y\""
+      }
+    ]
+  }
+}

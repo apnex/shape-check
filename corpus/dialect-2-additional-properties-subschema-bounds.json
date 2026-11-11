@@ -1,0 +1,52 @@
+{
+  "description": "A property judged against an additionalProperties subschema reports that subschema's uniqueItems and bound misfits as its own.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "properties": {
+      "n": {
+        "type": "number"
+      }
+    },
+    "additionalProperties": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "minimum": 1
+      }
+    }
+  },
+  "value": {
+    "n": -5,
+    "x": [
+      0,
+      0
+    ],
+    "y": [
+      2,
+      3
+    ]
+  },
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "/x",
+        "keyword": "uniqueItems",
+        "expected": true,
+        "fit": "an array whose items are all different"
+      },
+      {
+        "pointer": "/x/0",
+        "keyword": "minimum",
+        "expected": 1,
+        "fit": "a number at least 1"
+      },
+      {
+        "pointer": "/x/1",
+        "keyword": "minimum",
+        "expected": 1,
+        "fit": "a number at least 1"
+      }
+    ]
+  }
+}

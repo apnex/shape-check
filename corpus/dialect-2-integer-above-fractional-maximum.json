@@ -1,0 +1,19 @@
+{
+  "description": "An integer above a fractional maximum misfits, the bound written with its fraction.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "maximum": 1.5
+  },
+  "value": 2,
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "maximum",
+        "expected": 1.5,
+        "fit": "a number at most 1.5"
+      }
+    ]
+  }
+}

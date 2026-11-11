@@ -1,0 +1,11 @@
+{
+  "description": "uniqueItems ignores null.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "uniqueItems": true
+  },
+  "value": null,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

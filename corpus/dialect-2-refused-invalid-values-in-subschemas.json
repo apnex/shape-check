@@ -1,0 +1,38 @@
+{
+  "description": "Ill-formed new keywords in each kind of subschema are refused as invalid-value at that subschema, in pointer order.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "properties": {
+      "n": {
+        "minimum": "0"
+      }
+    },
+    "items": {
+      "uniqueItems": "yes"
+    },
+    "additionalProperties": {
+      "maximum": null
+    }
+  },
+  "value": null,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "/additionalProperties",
+        "keyword": "maximum",
+        "problem": "invalid-value"
+      },
+      {
+        "pointer": "/items",
+        "keyword": "uniqueItems",
+        "problem": "invalid-value"
+      },
+      {
+        "pointer": "/properties/n",
+        "keyword": "minimum",
+        "problem": "invalid-value"
+      }
+    ]
+  }
+}

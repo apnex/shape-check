@@ -1,0 +1,32 @@
+{
+  "description": "Dialect 2's identifier is a known dialect, so its document is examined and every problem listed rather than one unknown-dialect.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "type": "bad",
+    "mystery": true,
+    "items": {
+      "pattern": "["
+    }
+  },
+  "value": 0,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "",
+        "keyword": "mystery",
+        "problem": "unknown-keyword"
+      },
+      {
+        "pointer": "",
+        "keyword": "type",
+        "problem": "invalid-value"
+      },
+      {
+        "pointer": "/items",
+        "keyword": "pattern",
+        "problem": "invalid-pattern"
+      }
+    ]
+  }
+}

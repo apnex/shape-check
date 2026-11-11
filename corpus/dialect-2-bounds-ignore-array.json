@@ -1,0 +1,14 @@
+{
+  "description": "Numeric bounds ignore an array and do not reach the numbers inside it.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "minimum": 10,
+    "maximum": 0
+  },
+  "value": [
+    5
+  ],
+  "verdict": {
+    "verdict": "fits"
+  }
+}

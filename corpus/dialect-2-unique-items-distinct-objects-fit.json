@@ -1,0 +1,26 @@
+{
+  "description": "Objects differing in a value, a name or a property count are all different and fit uniqueItems true.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "uniqueItems": true
+  },
+  "value": [
+    {
+      "a": 1
+    },
+    {
+      "a": 2
+    },
+    {
+      "b": 1
+    },
+    {
+      "a": 1,
+      "b": 1
+    },
+    {}
+  ],
+  "verdict": {
+    "verdict": "fits"
+  }
+}

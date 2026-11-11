@@ -1,0 +1,24 @@
+{
+  "description": "In a dialect 1 document a dialect 2 keyword is unknown whatever its value, so an ill-formed one is unknown-keyword, not invalid-value.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:1",
+    "minimum": "zero",
+    "uniqueItems": 1
+  },
+  "value": null,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "",
+        "keyword": "minimum",
+        "problem": "unknown-keyword"
+      },
+      {
+        "pointer": "",
+        "keyword": "uniqueItems",
+        "problem": "unknown-keyword"
+      }
+    ]
+  }
+}

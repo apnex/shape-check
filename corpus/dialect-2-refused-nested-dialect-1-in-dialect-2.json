@@ -1,0 +1,25 @@
+{
+  "description": "A dialect 1 document placed in a dialect 2 document still carrying its marker is refused as nested-dialect.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "properties": {
+      "body": {
+        "$schema": "urn:apnex:shape-check:dialect:1",
+        "type": "string"
+      }
+    }
+  },
+  "value": {
+    "body": "entry"
+  },
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "/properties/body",
+        "keyword": "$schema",
+        "problem": "nested-dialect"
+      }
+    ]
+  }
+}

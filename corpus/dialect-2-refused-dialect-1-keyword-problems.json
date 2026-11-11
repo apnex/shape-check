@@ -1,0 +1,33 @@
+{
+  "description": "Dialect 1 keywords in a dialect 2 document are refused for the forms SD2 forbids, as in dialect 1.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "type": "float",
+    "required": [
+      "a",
+      "a"
+    ],
+    "minLength": -1
+  },
+  "value": null,
+  "verdict": {
+    "verdict": "shape-refused",
+    "problems": [
+      {
+        "pointer": "",
+        "keyword": "minLength",
+        "problem": "invalid-value"
+      },
+      {
+        "pointer": "",
+        "keyword": "required",
+        "problem": "invalid-value"
+      },
+      {
+        "pointer": "",
+        "keyword": "type",
+        "problem": "invalid-value"
+      }
+    ]
+  }
+}

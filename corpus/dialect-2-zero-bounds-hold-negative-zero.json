@@ -1,0 +1,12 @@
+{
+  "description": "Negative zero equals zero, so it meets both a minimum and a maximum of 0.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "minimum": 0,
+    "maximum": 0
+  },
+  "value": -0,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

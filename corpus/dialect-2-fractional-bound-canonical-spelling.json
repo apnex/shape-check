@@ -1,0 +1,19 @@
+{
+  "description": "A minimum spelled 2.50 is written in the fit sentence as canonical JSON writes it, 2.5.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "minimum": 2.50
+  },
+  "value": 2.25,
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "minimum",
+        "expected": 2.5,
+        "fit": "a number at least 2.5"
+      }
+    ]
+  }
+}

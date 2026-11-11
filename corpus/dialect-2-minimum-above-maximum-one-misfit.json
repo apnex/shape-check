@@ -1,0 +1,20 @@
+{
+  "description": "With the minimum above the maximum a number above both misfits only the maximum, each bound judged on its own.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "minimum": 5,
+    "maximum": 3
+  },
+  "value": 6,
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "maximum",
+        "expected": 3,
+        "fit": "a number at most 3"
+      }
+    ]
+  }
+}

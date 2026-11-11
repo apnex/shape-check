@@ -1,0 +1,45 @@
+{
+  "description": "Bound misfits in properties and a missing required property sort by property name, not by shape order.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "type": "object",
+    "required": [
+      "c"
+    ],
+    "properties": {
+      "b": {
+        "maximum": 10
+      },
+      "a": {
+        "minimum": 0
+      }
+    }
+  },
+  "value": {
+    "b": 11,
+    "a": -1
+  },
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "/a",
+        "keyword": "minimum",
+        "expected": 0,
+        "fit": "a number at least 0"
+      },
+      {
+        "pointer": "/b",
+        "keyword": "maximum",
+        "expected": 10,
+        "fit": "a number at most 10"
+      },
+      {
+        "pointer": "/c",
+        "keyword": "required",
+        "expected": "c",
+        "fit": "a property named \"c\""
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "description": "Numeric bounds ignore null.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "minimum": 10,
+    "maximum": 0
+  },
+  "value": null,
+  "verdict": {
+    "verdict": "fits"
+  }
+}

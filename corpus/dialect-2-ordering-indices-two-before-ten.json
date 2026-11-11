@@ -1,0 +1,39 @@
+{
+  "description": "Maximum misfits at array indices sort numerically, 2 before 10.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "items": {
+      "maximum": 0
+    }
+  },
+  "value": [
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "/2",
+        "keyword": "maximum",
+        "expected": 0,
+        "fit": "a number at most 0"
+      },
+      {
+        "pointer": "/10",
+        "keyword": "maximum",
+        "expected": 0,
+        "fit": "a number at most 0"
+      }
+    ]
+  }
+}

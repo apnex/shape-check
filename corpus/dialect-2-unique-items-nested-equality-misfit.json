@@ -1,0 +1,38 @@
+{
+  "description": "Equality reaches inside items: nested property order and number spelling do not make two objects different.",
+  "shape": {
+    "$schema": "urn:apnex:shape-check:dialect:2",
+    "uniqueItems": true
+  },
+  "value": [
+    {
+      "o": {
+        "x": 1,
+        "y": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "o": {
+        "y": [
+          1,
+          2.0
+        ],
+        "x": 1.0
+      }
+    }
+  ],
+  "verdict": {
+    "verdict": "misfit",
+    "misfits": [
+      {
+        "pointer": "",
+        "keyword": "uniqueItems",
+        "expected": true,
+        "fit": "an array whose items are all different"
+      }
+    ]
+  }
+}
