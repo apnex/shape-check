@@ -35,6 +35,7 @@ The trait column names any trait a system takes on by using the capability.
 |---|---|---|---|---|
 | `declared-shape-validation` | provides | none | A value is judged against a shape declared as data; a misfit is explained with where it lies, what the shape expected there, and what would make the value fit, and the same value and shape always get the same verdict and reason. The part that asked owns any refusal. | none |
 | `plain-json-value` | provides | none | An arbitrary value is read once, without the call stack, into a deeply frozen plain JSON value - reading only own enumerable data properties through their descriptors when reading what application code handed back (zorg's `D54`), or reading each object once when snapshotting a caller's input (zorg's `EM12`), with depth, UTF-8 byte-length and safe-integer measures and any native promise met given a do-nothing handler - or refused as not plain JSON; and any plain JSON value is written in canonical form (`SD4`). | none |
+| `bounded-shape-validation` | provides | none | A value is judged against a shape in dialect 2, which keeps every keyword of dialect 1 with its meaning and adds `minimum`, `maximum` and `uniqueItems`, as JSON Schema names them; a misfit is explained as dialect 1's are, and the same value and shape always get the same verdict and reason (`SD9`). The part that asked owns any refusal. | none |
 
 shape-check holds nothing between judgements, coordinates no actors and contains no model, so it brings no trait.
 
@@ -164,12 +165,30 @@ Tested by: `E9`, in `operation-call/test/contract/declared-shape-validation.test
 `SAFE_INTEGER_LIMIT` is `9007199254740991`; `toCanonicalJson(value)` writes any plain JSON value in `SD4`'s canonical form without the call stack; `utf8ByteLength(text)` returns the UTF-8 byte length of `text`; `nestingDepth(value)` returns `0` for a scalar and `1` plus the greatest child depth for an array or object (so `[]` and `{}` have depth `1`, matching AGP's container depth and `EM10` and `EM11`); and `firstUnsafeInteger(value)` returns `{pointer, value}` for the first integer outside `[-SAFE_INTEGER_LIMIT, SAFE_INTEGER_LIMIT]` in `SD5` pointer order (`pointer` `""` at the root), or `null` when every integer is within bounds.\
 Tested by: `test/contract/plain-json-value.test.js`, covering descriptor-only reading, getters never called, `then` data properties vs native promises (including a throwing `constructor` getter), `Proxy` trap throws, `__proto__`, shared aliases, deep nesting beyond the call stack, cycles, sparse arrays, symbols, non-enumerable properties, `snapshotJson`, `toCanonicalJson`, `utf8ByteLength`, `nestingDepth` and `firstUnsafeInteger`.
 
+**SD9 - Dialect 2: numeric bounds and distinct items (designed under `D4`, not yet built).**\
+Dialect 2 is a second dialect identifier, `urn:apnex:shape-check:dialect:2`, beside dialect 1's, which it leaves unchanged: a dialect 1 document carrying any keyword below is still refused with `unknown-keyword`.\
+A dialect 2 document is a shape document whose root carries that identifier; it may use every keyword of SD2, each meaning what SD2 says, and three more, each meaning what JSON Schema 2020-12 says:
+
+| Keyword | Value in a shape | Applies to | What it requires |
+|---|---|---|---|
+| `minimum` | a JSON number | numbers | the value is at least the number |
+| `maximum` | a JSON number | numbers | the value is at most the number |
+| `uniqueItems` | a boolean | arrays | when `true`, no two items are equal, equality as SD2 states it; `false` requires nothing |
+
+SD1 holds for dialect 2 with its identifier in place of dialect 1's; a part that places one document inside another removes the inner document's `$schema` after checking that it names the outer document's dialect, or dialect 1 inside a dialect 2 document.\
+SD3 holds with one change: `unknown-dialect` is a root `$schema` naming neither dialect, and `invalid-value` covers a `minimum` or `maximum` that is not a JSON number and a `uniqueItems` that is not a boolean.\
+SD4's misfit table gains three rows: `minimum`, at the number, `expected` the keyword's value, `fit` `a number at least N`; `maximum`, at the number, `expected` the keyword's value, `fit` `a number at most N`; and `uniqueItems`, at the array, `expected` `true`, `fit` `an array whose items are all different`; `N` is written as canonical JSON writes it.\
+SD5 orders dialect 2's misfits as it orders dialect 1's, and a value judged against both a dialect 1 shape and the same shape marked dialect 2 gets the same verdict and reason.\
+SD6's corpus gains, for each of the three keywords, a value that fits and one that does not, a dialect 1 document refused for using one, and a dialect 2 document refused for an invalid value of each; an agent other than the one that implements dialect 2 writes those cases from this section alone, and SD7's carrying components run them as they run the rest.\
+Not yet built: `bounded-shape-validation` is deferred under `D4` in `export-map.json`, and nothing in the package judges a dialect 2 document until it is built and its corpus cases pass.
+
 ---
 
 ## Reference
 
 This repository, `apnex/shape-check`, and its package `@apnex/shape-check`, released only by its own CI as a tarball attached to a GitHub release, drafted, verified and then published (`.github/workflows/release.yml`).\
 The package `@apnex/shape-check` exports `judgeShapeValue`, `prepareShapeDocument`, `SHAPE_DIALECT_ID`, `readPlainJson`, `observePromises`, `snapshotJson`, `toCanonicalJson`, `utf8ByteLength`, `nestingDepth`, `firstUnsafeInteger` and `SAFE_INTEGER_LIMIT`, as `export-map.json` records, and `@apnex/shape-check/corpus` holds the corpus of SD6, written from this contract by an agent other than the one that built the implementation.\
+`bounded-shape-validation`, dialect 2 (SD9), is designed and not yet built, and `export-map.json` records it as deferred under `D4`.\
 The implementation imports no module particular to one runtime.
 
 ---

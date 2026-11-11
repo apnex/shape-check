@@ -20,5 +20,7 @@
       "data": { "part": "shape-check", "serves": ["declared-shape-validation"] }
     }
   },
-  "deferred": {}
+  "deferred": {
+    "bounded-shape-validation": "D4"
+  }
 }

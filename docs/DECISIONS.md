@@ -52,3 +52,26 @@ The five fixes every consumer of the components zorg maintains needs, made by dr
 
 **Why.**\
 Draw takes components as public GitHub release files pinned by hash and runs Node 22 in production (draw's `H26-2`); a `file:` link builds only beside a checkout, and an AGP declared for install would make every consumer install it though every import of it is a type.
+
+---
+
+## D4 - Dialect 2 adds `minimum`, `maximum` and `uniqueItems`, and dialect 1 is unchanged
+
+**Ruled by:** the director, 2026-11-11, drafted by drawv2 under its `H31-8` and co-signed by zorg (`zorg/docs/DECISIONS.md` `D76`).\
+**Affects:** `CONTRACT.md` (a capability row, `bounded-shape-validation`, and `SD9`), `export-map.json` (the row deferred under this ruling); nothing in `src/`, and nothing the component does until it is built.
+
+**Ruling.**\
+A second dialect, `urn:apnex:shape-check:dialect:2`, keeps every keyword of dialect 1 with its meaning and adds three, named and meaning as JSON Schema 2020-12 names and means them: `minimum` and `maximum` on numbers, and `uniqueItems` on arrays.\
+Dialect 1 does not change, as `SD1` promises: a dialect 1 document using one of the three is refused as it is today.\
+Each new keyword's misfit is recorded in `SD4`'s form, with a fixed `fit` sentence.\
+The corpus cases for dialect 2 are written from `SD9` by an agent other than the one that implements it, as `SD6` requires of every case.\
+Until it is built and its cases pass, `bounded-shape-validation` is deferred under this ruling in `export-map.json`.
+
+**Why.**\
+A part bounding a number or requiring distinct items today writes its own check beside the shape, which is the second checker this component exists to remove.\
+`drawv2` needs both to state its kinds' fields as shapes - coordinates and counts bounded, a list of members without repeats - and zorg agreed the dialect as a gain for every consumer.\
+JSON Schema's names keep the dialect a subset of JSON Schema 2020-12, as `SD1` states of dialect 1.
+
+**Alternatives refuted.**\
+Adding the keywords to dialect 1 - `SD1` says what a released dialect means never changes.\
+Exclusive bounds as well - no consumer has asked for them, and they can join a later dialect when one does.
