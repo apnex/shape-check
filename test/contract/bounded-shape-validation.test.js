@@ -5,7 +5,10 @@
 // they cover what SD9 asks of the corpus, that a dialect 1 shape marked dialect 2 is judged the same, record
 // for record, and the judgements beyond the corpus's limits that SD6 places in shape-check's own tests.
 import assert from "node:assert/strict";
+import fs from "node:fs";
+import path from "node:path";
 import { test } from "node:test";
+import { fileURLToPath } from "node:url";
 import corpus from "@apnex/shape-check/corpus" with { type: "json" };
 import { judgeShapeValue, prepareShapeDocument, SHAPE_DIALECT_ID } from "@apnex/shape-check";
 
@@ -27,6 +30,8 @@ const isObject = (v) => v !== null && typeof v === "object" && !Array.isArray(v)
 const holdsName = (v, name) => Array.isArray(v) ? v.some((item) => holdsName(item, name))
 	: isObject(v) ? Object.hasOwn(v, name) || Object.values(v).some((item) => holdsName(item, name)) : false;
 const dialect2 = (body) => ({ $schema: DIALECT_2, ...body });
+const holdsNegativeZero = (v) => Object.is(v, -0) || (v !== null && typeof v === "object" && Object.values(v).some(holdsNegativeZero));
+const corpusFolder = path.join(path.dirname(fileURLToPath(import.meta.url)), "..", "..", "corpus");
 
 test("SD9: dialect 2 is a second identifier beside dialect 1's, which stays the one SHAPE_DIALECT_ID names", () => {
 	assert.equal(SHAPE_DIALECT_ID, "urn:apnex:shape-check:dialect:1");
@@ -69,6 +74,18 @@ test("beyond the corpus: bounds outside the safe integers, written in canonical 
 		verdict: "misfit",
 		misfits: [{ pointer: "", keyword: "maximum", expected: 9007199254740992, fit: "a number at most 9007199254740992" }],
 	});
+});
+
+test("SD6, SD9: every corpus case holding -0, read from its own file with -0 intact -- the public bundle, written by JSON.stringify, writes it 0 -- is judged as its verdict says", () => {
+	const cases = fs.readdirSync(corpusFolder).filter((f) => f.endsWith(".json"))
+		.map((f) => ({ name: f.slice(0, -5), ...JSON.parse(fs.readFileSync(path.join(corpusFolder, f), "utf8")) }))
+		.filter((c) => holdsNegativeZero(c.shape) || holdsNegativeZero(c.value));
+	const names = cases.map((c) => c.name);
+	for (const name of ["const-negative-zero-equals-zero", "integer-negative-zero", "dialect-2-negative-zero-below-fractional-minimum", "dialect-2-negative-zero-minimum-written-as-zero", "dialect-2-negative-zero-maximum-written-as-zero", "dialect-2-unique-items-negative-zero-misfit"]) {
+		assert.ok(names.includes(name), `${name} holds -0 in its file`);
+	}
+	for (const c of cases) assert.equal(canonical(judgeShapeValue(c.shape, c.value)), canonical(c.verdict), c.name);
+	assert.equal(cases.length, 8, "the eight case files holding -0 in a shape or a value");
 });
 
 test("beyond the corpus: -0, which the corpus's public bundle writes as 0, judged as 0 and written 0 in a fit", () => {

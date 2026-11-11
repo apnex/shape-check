@@ -32,6 +32,7 @@ function valueIsOfType(value: JsonValue, typeName: string): boolean {
 
 /** True when no two items of an array are equal as JSON (SD2), compared by their canonical JSON (SD4). */
 function itemsAllDifferent(items: readonly JsonValue[]): boolean {
+	if (items.length < 2) return true;
 	const seen = new Set<string>();
 	for (const item of items) {
 		const text = toCanonicalJson(item);
