@@ -75,3 +75,39 @@ JSON Schema's names keep the dialect a subset of JSON Schema 2020-12, as `SD1` s
 **Alternatives refuted.**\
 Adding the keywords to dialect 1 - `SD1` says what a released dialect means never changes.\
 Exclusive bounds as well - no consumer has asked for them, and they can join a later dialect when one does.
+
+---
+
+## D5 - 0.2.0: dialect 2 built
+
+**Ruled by:** the director, 2026-11-11 (draw's `H31-9`, building the contract the director ratified and zorg co-signed under zorg's `D76`; `D4` here).\
+**Affects:** `src/shape-dialect.ts`, `src/shape-document-check.ts`, `src/value-judgement.ts`, `corpus/` (dialect 2's cases, and one earlier case's marker), `test/contract/bounded-shape-validation.test.js`, `CONTRACT.md` (`SD9` and Reference), `export-map.json`, `README.md`, and `package.json` and its lockfile; a minor release, `0.2.0`.
+
+**Ruling.**\
+Dialect 2, as `D4` designs it and `SD9` states it, is built: a document marked `urn:apnex:shape-check:dialect:2` may use every keyword of dialect 1 with its meaning, and `minimum`, `maximum` and `uniqueItems`.\
+Preparation refuses a dialect 1 document using any of the three with `unknown-keyword`, as before, and a dialect 2 document holding a `minimum` or `maximum` that is no JSON number, or a `uniqueItems` that is no boolean, with `invalid-value`; a `$schema` naming neither dialect is `unknown-dialect`.\
+Judgement reports `minimum` and `maximum` at the number, `expected` the keyword's value, and `uniqueItems` at the array, `expected` `true`, with `SD4`'s three new fixed sentences, ordered as `SD5` orders every misfit.\
+`bounded-shape-validation` is current: `export-map.json` serves it by `judgeShapeValue`, `prepareShapeDocument` and the corpus, and defers nothing.\
+Dialect 1 is unchanged: every case written before passes as before, and every dialect 1 shape of the corpus, marked dialect 2, is judged the same, record for record.
+
+**The corpus, written first by another agent.**\
+Dialect 2's 112 cases, `corpus/dialect-2-*.json`, were written from the contract alone by a fresh agent dispatched from draw's top level, which read no implementation, and committed on their own before any implementation code; none is changed.\
+One earlier case, `refused-unknown-dialect-string`, used dialect 2's identifier as an unknown dialect, which `SD9` makes known; its marker is now `urn:apnex:shape-check:dialect:3`, still unknown, and the writer's `dialect-2-refused-marker-is-a-known-dialect` carries `SD9`'s verdict for that same shape.\
+The writer's readings where the contract left a choice are the implementation's too: `-0` written `0` in a `fit`, as canonical JSON writes it; one `uniqueItems` record per array, however many items repeat; strings equal by code point; a dialect 1 document's ill-formed `minimum`, `maximum` or `uniqueItems` an `unknown-keyword`, its value never examined; a marker in a subschema `nested-dialect`, whichever dialect it names; `exclusiveMinimum`, `exclusiveMaximum` and `multipleOf` still unknown keywords in dialect 2; and the bounds in the new `fit` sentences written as canonical JSON writes numbers.
+
+**Choices made at build.**
+- The judgement takes no dialect: a shape that has passed preparation holds a keyword of dialect 2 only when it is a dialect 2 document, so one judgement serves both, which is what keeps a dialect 1 shape and the same shape marked dialect 2 judged the same.
+- A bound must be a JSON number, so a finite one: a `NaN` or an infinity, which only a JavaScript caller can hand in, is `invalid-value`.
+- `uniqueItems` compares the items' canonical JSON, which is equality as `SD2` states it -- numbers by value, `-0` as `0`, objects whatever their property order -- in one pass over the array, so 100000 items are judged in a fraction of a second.
+- `SHAPE_DIALECT_ID` still names dialect 1, and no export is added, as `SD9` and Reference name none; the corpus's public bundle still declares dialect 1 in its `dialect` field, each case's shape carrying its own marker, so the data path every carrying component reads keeps its form.
+- `bounded-shape-validation` has its own contract test file, as every row does here, so `test/contract/contract-coverage.test.js` reports no row to-do.
+- The corpus's public bundle is written by `JSON.stringify`, which writes `-0` as `0`, so the corpus's `-0` cases, dialect 1's and dialect 2's, reach every judgement that reads the bundle as `0`, as any JSON carrying them would; `-0` against a bound, in a bound's `fit` and in `uniqueItems` is held by `test/contract/bounded-shape-validation.test.js` instead, as `SD6` places a judgement the corpus cannot carry in shape-check's own tests.
+
+**Mutants.**\
+The repository keeps no mutation tool, so each of 13 mutants was made as one exact replacement in a copy of the working tree, built and run against every test: bounds compared inclusively each way, `uniqueItems` never reported, compared by `JSON.stringify` so property order counted, reported at an item rather than the array, or demanded by `uniqueItems: false`; dialect 1 taking dialect 2's keywords, and dialect 2 unknown; a bound or a `uniqueItems` of any value accepted, and an infinite bound accepted; the bounds applied to a value of another type; and a `-0` bound written `-0` in its `fit`.\
+Every one was killed, the last only once the test of `-0` above was added.
+
+**Why.**\
+`D4`'s reasons stand: a part bounding a number or requiring distinct items writes its own check beside the shape today, the second checker this component exists to remove, and draw needs both to state its kinds' fields as shapes.\
+A new capability under `0.x` is a minor release; the components that depend on `0.1.0` keep it until one needs dialect 2 through them.
+
