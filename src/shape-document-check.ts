@@ -1,9 +1,10 @@
 /**
- * Whether a shape document is a shape at all, and every problem when it is not (CONTRACT.md, SD1 and SD3).
+ * Whether a shape document is a shape at all, and every problem when it is not (CONTRACT.md, SD1 and SD3, and SD9
+ * for dialect 2).
  */
 import { compareByCodePoint, jsonValuesEqual } from "./canonical-json.js";
 import { compareJsonPaths, formatJsonPointer } from "./json-pointer-order.js";
-import { compileShapePattern, SHAPE_DIALECT_ID, SHAPE_KEYWORDS, SHAPE_TYPE_NAMES } from "./shape-dialect.js";
+import { compileShapePattern, SHAPE_TYPE_NAMES, shapeKeywordsOf } from "./shape-dialect.js";
 import { isJsonObject, type JsonObject, type JsonPathToken, type JsonValue, type ShapeProblem, type ShapeProblemCode } from "./shape-verdict.js";
 
 interface LocatedProblem {
@@ -27,12 +28,12 @@ function isValidEnumValue(value: JsonValue | undefined): boolean {
 	return value.every((member, i) => value.slice(0, i).every((earlier) => !jsonValuesEqual(earlier, member)));
 }
 
-/** Examines one subschema and everything under it, collecting its problems. */
-function examineSubschema(node: JsonObject, path: readonly JsonPathToken[], isRoot: boolean, found: LocatedProblem[]): void {
+/** Examines one subschema and everything under it against its dialect's keywords, collecting its problems. */
+function examineSubschema(node: JsonObject, path: readonly JsonPathToken[], isRoot: boolean, keywords: ReadonlySet<string>, found: LocatedProblem[]): void {
 	const report = (keyword: string, problem: ShapeProblemCode, at: readonly JsonPathToken[] = path) => found.push({ path: at, keyword, problem });
 	// A value in a subschema position that is not an object is "not-an-object" there, never "invalid-value" at its parent.
 	const examinePosition = (value: JsonValue | undefined, at: readonly JsonPathToken[]) => {
-		if (isJsonObject(value)) examineSubschema(value, at, false, found);
+		if (isJsonObject(value)) examineSubschema(value, at, false, keywords, found);
 		else found.push({ path: at, keyword: "", problem: "not-an-object" });
 	};
 	for (const keyword of Object.keys(node)) {
@@ -41,7 +42,7 @@ function examineSubschema(node: JsonObject, path: readonly JsonPathToken[], isRo
 			if (!isRoot) report("$schema", "nested-dialect");
 			continue;
 		}
-		if (!SHAPE_KEYWORDS.has(keyword)) { report(keyword, "unknown-keyword"); continue; }
+		if (!keywords.has(keyword)) { report(keyword, "unknown-keyword"); continue; }
 		switch (keyword) {
 			case "type":
 				if (!isValidTypeValue(value)) report(keyword, "invalid-value");
@@ -71,6 +72,15 @@ function examineSubschema(node: JsonObject, path: readonly JsonPathToken[], isRo
 			case "format":
 				if (value !== "uri") report(keyword, "invalid-value");
 				break;
+			case "minimum":
+			case "maximum":
+				// dialect 2 only (SD9): a JSON number, so a finite one
+				if (typeof value !== "number" || !Number.isFinite(value)) report(keyword, "invalid-value");
+				break;
+			case "uniqueItems":
+				// dialect 2 only (SD9)
+				if (typeof value !== "boolean") report(keyword, "invalid-value");
+				break;
 			default:
 				// minLength, maxLength, minItems, maxItems
 				if (!isNonNegativeInteger(value)) report(keyword, "invalid-value");
@@ -80,15 +90,17 @@ function examineSubschema(node: JsonObject, path: readonly JsonPathToken[], isRo
 
 /**
  * Finds every problem that makes a shape document unusable as a shape, in SD3's order; an empty list
- * means the document is a shape. A missing or unknown dialect, or a document that is not an object, is
- * the whole list.
+ * means the document is a shape. A missing dialect, a marker naming neither dialect, or a document that
+ * is not an object, is the whole list; otherwise the document is examined against its dialect's keywords,
+ * so a dialect 1 document using a keyword of dialect 2 meets it as an unknown keyword (SD9).
  */
 export function findShapeProblems(shape: JsonValue): ShapeProblem[] {
 	if (!isJsonObject(shape)) return [{ pointer: "", keyword: "", problem: "not-an-object" }];
 	if (!Object.hasOwn(shape, "$schema")) return [{ pointer: "", keyword: "$schema", problem: "missing-dialect" }];
-	if (shape.$schema !== SHAPE_DIALECT_ID) return [{ pointer: "", keyword: "$schema", problem: "unknown-dialect" }];
+	const keywords = shapeKeywordsOf(shape.$schema);
+	if (keywords === undefined) return [{ pointer: "", keyword: "$schema", problem: "unknown-dialect" }];
 	const found: LocatedProblem[] = [];
-	examineSubschema(shape, [], true, found);
+	examineSubschema(shape, [], true, keywords, found);
 	found.sort((a, b) => compareJsonPaths(a.path, b.path) || compareByCodePoint(a.keyword, b.keyword) || compareByCodePoint(a.problem, b.problem));
 	return found.map((p) => ({ pointer: formatJsonPointer(p.path), keyword: p.keyword, problem: p.problem }));
 }
