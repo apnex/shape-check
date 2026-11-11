@@ -57,7 +57,7 @@ Draw takes components as public GitHub release files pinned by hash and runs Nod
 
 ## D4 - Dialect 2 adds `minimum`, `maximum` and `uniqueItems`, and dialect 1 is unchanged
 
-**Ruled by:** not yet ruled; drafted by drawv2 under its `H31-8`, agreed in substance by zorg (zorg's planning reply to drawv2, which agrees all twelve of draw's proposals, the twelfth being this dialect), for the director's ruling and zorg's co-signature.\
+**Ruled by:** the director, 2026-11-11, drafted by drawv2 under its `H31-8` and co-signed by zorg (`zorg/docs/DECISIONS.md` `D76`).\
 **Affects:** `CONTRACT.md` (a capability row, `bounded-shape-validation`, and `SD9`), `export-map.json` (the row deferred under this ruling); nothing in `src/`, and nothing the component does until it is built.
 
 **Ruling.**\
